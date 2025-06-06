@@ -1,4 +1,4 @@
-let adminAuthenticated = false;
+let adminAuthenticated = true;
 
 document.addEventListener('DOMContentLoaded', function () {
     // Check for existing session
