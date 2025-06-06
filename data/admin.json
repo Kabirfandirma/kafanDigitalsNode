@@ -1,0 +1,44 @@
+{
+  "pendingTestimonials": [
+    {
+      "id": "1749251941482",
+      "name": "Yahya Aliyu",
+      "photo": null,
+      "message": "Great Work",
+      "date": "2025-06-06T23:19:01.482Z",
+      "approved": false
+    },
+    {
+      "id": "1749251338147",
+      "name": "Emmanuel John",
+      "photo": null,
+      "message": "U really deserved my five stars ✨ ",
+      "date": "2025-06-06T23:08:58.147Z",
+      "approved": false
+    },
+    {
+      "id": "1749250448584",
+      "name": "Garba Joshua",
+      "photo": null,
+      "message": "Nice to work with you",
+      "date": "2025-06-06T22:54:08.584Z",
+      "approved": false
+    },
+    {
+      "id": "1749249393499",
+      "name": "Nasir Raufai",
+      "photo": null,
+      "message": "Thank you Kafan Digitals",
+      "date": "2025-06-06T22:36:33.499Z",
+      "approved": false
+    },
+    {
+      "id": "1749249097460",
+      "name": "Abubakar Almustapha",
+      "photo": null,
+      "message": "Thanks for making my brand stand out",
+      "date": "2025-06-06T22:31:37.460Z",
+      "approved": false
+    }
+  ]
+}

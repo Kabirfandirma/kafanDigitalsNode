@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1749249030505",
+    "name": "Kulthum Aliyu",
+    "photo": null,
+    "message": "They designed a flyer for me, I really love it",
+    "date": "2025-06-06T22:30:30.505Z",
+    "approved": true
+  },
+  {
+    "id": "1749245943810",
+    "name": "Umar Musa Jalo",
+    "photo": null,
+    "message": "I really like Kafan Digital works",
+    "date": "2025-06-06T21:39:03.810Z",
+    "approved": true
+  },
+  {
+    "id": "1749245839596",
+    "name": "Sarah Johnson",
+    "photo": "https://randomuser.me/api/portraits/women/43.jpg",
+    "message": "Kafan Digitals created an amazing logo for my business!",
+    "date": "2025-06-06T21:37:19.596Z",
+    "approved": true
+  },
+  {
+    "id": "17492458395981",
+    "name": "Michael Brown",
+    "photo": "https://randomuser.me/api/portraits/men/32.jpg",
+    "message": "The flyers helped us triple event attendance!",
+    "date": "2025-06-06T21:37:19.598Z",
+    "approved": true
+  }
+]

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafan Digitals - Creative Design Solutions</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <div class="d-flex align-items-center">
+                <div class="logo-circle me-2">
+                    <img src="/images/logo.png" alt="Kafan Digitals Logo" class="logo-img">
+                </div>
+                <a class="navbar-brand" href="/">Kafan Digitals</a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center py-5">
+            <h1>Kafan Digitals</h1>
+            <p class="lead">Creative design solutions for your digital needs</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">About Us</h2>
+            <p class="text-center">We specialize in creating stunning visual designs that help brands stand out. From
+                logos to complete branding packages, we've got you covered.</p>
+        </div>
+    </section>
+
+    <!-- CEO Section -->
+    <section class="ceo-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center mb-4 mb-md-0">
+                    <div class="ceo-image-container">
+                        <img src="/images/ceo.png" alt="CEO of Kafan Digitals"
+                            class="ceo-image img-fluid rounded-circle">
+                        <div class="ceo-social">
+                            <a href="#" class="text-white me-2"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <h2 class="mb-4">Meet Our CEO</h2>
+                    <p class="lead">Hi, I'm Kabir Almustapha Fandirma, founder of Kafan
+                        Digitals.
+                    </p>
+                    <p>I'm a Computer Science student with a passion for creating beautiful digital experiences. With
+                        expertise in web development, graphic design, and UI/UX design, I lead our team to deliver
+                        exceptional results for our clients.</p>
+                    <p>My journey in tech started 5 years ago, and since then I've helped numerous businesses
+                        establish their digital presence through innovative design solutions.</p>
+                    <div class="skills mt-4">
+                        <span class="badge bg-primary me-2">Web Development</span>
+                        <span class="badge bg-primary me-2">Graphic Design</span>
+                        <span class="badge bg-primary me-2">UI/UX Design</span>
+                        <span class="badge bg-primary">Branding</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section py-5">
+        <div class="container text-center">
+            <h2 class="mb-4">Ready to Work Together?</h2>
+            <div class="cta-buttons">
+                <a href="/portfolio" class="cta-button cta-primary">Explore Our Work</a>
+                <a href="/contact" class="cta-button cta-secondary">Get in Touch</a>
+            </div>
+            <p class="mt-4">If our work impressed you, <a href="/testimonials"
+                    style="color: var(--primary-accent);">leave a testimony</a></p>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="/js/script.js"></script>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="/portfolio">Portfolio</a>
+                <a href="/testimonials">Testimonials</a>
+                <a href="/contact">Contact</a>
+            </div>
+            <p>&copy; <span id="year"></span> Kafan Digitals. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Auto-update copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
