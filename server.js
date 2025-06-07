@@ -109,9 +109,18 @@ function readAdminData() {
 function writeAdminData(data) {
     fs.writeFileSync(adminFile, JSON.stringify(data, null, 2));
 }
+// Admin login route
+app.post('/admin/login', (req, res) => {
+    const { password } = req.body;
 
+    if (password === process.env.ADMIN_PASSWORD) {
+        res.json({ success: true });
+    } else {
+        res.status(401).json({ success: false });
+    }
+});
 // Admin authentication
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "kafanadmin123"; // Change in production
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "kafanadmin123";
 
 // Routes
 app.get('/', (req, res) => res.render('index'));
@@ -212,7 +221,7 @@ app.post('/api/portfolio', (req, res) => {
 app.post('/admin/login', (req, res) => {
     const { password } = req.body;
 
-    // Simple check - no changes needed here
+    // Simple check 
     if (password === ADMIN_PASSWORD) {
         res.json({
             success: true,
@@ -296,7 +305,6 @@ app.get('/api/testimonials', (req, res) => {
     res.json(readTestimonials().filter(t => t.approved));
 });
 
-// Add this new endpoint for admin to get all testimonials (approved and pending)
 app.get('/api/admin/testimonials', (req, res) => {
     const allTestimonials = {
         approved: readTestimonials().filter(t => t.approved),
@@ -328,7 +336,7 @@ app.post('/submit-testimonial', (req, res) => {
     adminData.pendingTestimonials.unshift(newTestimonial);
     writeAdminData(adminData);
 
-    // Also add to main testimonials file (but still marked as unapproved)
+
     const testimonials = readTestimonials();
     testimonials.unshift(newTestimonial);
     writeTestimonials(testimonials);

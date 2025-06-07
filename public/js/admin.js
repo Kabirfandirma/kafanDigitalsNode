@@ -18,38 +18,39 @@ function checkAdminSession() {
     }
 }
 
-// Login button - simple version
-document.getElementById('login-btn').addEventListener('click', function () {
-    const password = document.getElementById('admin-password').value;
+async function handleLogin() {
+    const password = document.getElementById('admin-password').value.trim();
 
-    // Show loading spinner
-    this.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Checking...';
+    if (!password) {
+        showAlert('Please enter your password', 'danger');
+        return;
+    }
 
-    fetch('/admin/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password: password })
-    })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                // Login success!
-                localStorage.setItem('isAdmin', 'true');
-                document.getElementById('login-section').style.display = 'none';
-                document.getElementById('admin-panel').style.display = 'block';
-                showAlert('Welcome Admin!', 'success');
-            } else {
-                showAlert(data.message || 'Wrong password!', 'danger');
-            }
-        })
-        .catch(error => {
-            showAlert('Login failed. Try again later.', 'danger');
-        })
-        .finally(() => {
-            // Reset button text
-            document.getElementById('login-btn').textContent = 'Login';
+    try {
+        const response = await fetch('/admin/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password })
         });
-});
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.message || 'Login failed');
+        }
+
+        localStorage.setItem('adminAuthenticated', 'true');
+        adminAuthenticated = true;
+        showAdminPanel();
+        loadAllTestimonials();
+        loadPortfolioItems();
+        showAlert('Login successful', 'success');
+    } catch (error) {
+        showAlert(error.message || 'Login failed. Please try again.', 'danger');
+    }
+}
+
+// Event listener
+document.getElementById('login-btn').addEventListener('click', handleLogin);
 
 async function handlePortfolioSubmit(e) {
     e.preventDefault();
@@ -123,8 +124,3 @@ async function deletePortfolioItem(id) {
         console.error('Delete error:', error);
     }
 }
-
-// Keep all other existing functions exactly as they were:
-// showAdminPanel(), loadAllTestimonials(), renderTestimonialsTable(),
-// approveTestimonial(), rejectTestimonial(), deleteTestimonial(),
-// loadPortfolioItems(), showAlert()

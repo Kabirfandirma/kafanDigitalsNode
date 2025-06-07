@@ -27,47 +27,124 @@ function loadPortfolioItems() {
     const items = [
         {
             title: "School Flyer Design",
-            image: "/portfolio-images/fitra.png",
+            image: "/portfolio-images/weekend.webp",
             description: "Modern Flyer design for a School"
 
         },
         {
             title: "Brand ID Design",
-            image: "/portfolio-images/BrandID.png",
+            image: "/portfolio-images/amina.webp",
             description: "Brand Identity design for a company"
 
         },
         {
             title: "Business Flyer Design",
-            image: "/portfolio-images/BinFussar.png",
+            image: "/portfolio-images/Assunniy.webp",
             description: "Modern business flyer design"
 
         },
         {
             title: "Eid Flyer Design",
-            image: "/portfolio-images/EidFitar.png",
+            image: "/portfolio-images/atamfa.webp",
             description: "Modern Flyer design for Eid"
 
         },
         {
             title: "Business Flyer Design",
-            image: "/portfolio-images/emeralld.png",
+            image: "/portfolio-images/bazanba.webp",
             description: "Modern Business Flyer design"
 
         },
         {
             title: "Poster Design",
-            image: "/portfolio-images/poster.png",
+            image: "/portfolio-images/Beli.webp",
             description: "Modern poster design for a politician"
 
         },
         {
             title: "Save the Date Design",
-            image: "/portfolio-images/Suyudi2.png",
+            image: "/portfolio-images/bin fussar.webp",
             description: "Modern Save the Date design for a Groom"
 
         },
-        // ... keep your other portfolio items ...
+        {
+            title: "Save the Date Design",
+            image: "/portfolio-images/dankama.webp",
+            description: "Modern Save the Date design for a Groom"
+
+        },
+        {
+            title: "Save the Date Design",
+            image: "/portfolio-images/emeralld.webp",
+            description: "Modern Save the Date design for a Groom"
+
+        },
+        {
+            title: "Save the Date Design",
+            image: "/portfolio-images/exchange.webp",
+            description: "Modern Save the Date design for a Groom"
+
+        },
+        {
+            title: "Save the Date Design",
+            image: "/portfolio-images/FASHION.webp",
+            description: "Modern Save the Date design for a Groom"
+
+        },
+        {
+            title: "Save the Date Design",
+            image: "/portfolio-images/fitra.webp",
+            description: "Modern Save the Date design for a Groom"
+
+        },
+        {
+            title: "Save the Date Design",
+            image: "/portfolio-images/gas fee.webp",
+            description: "Modern Save the Date design for a Groom"
+
+        },
+        {
+            title: "Save the Date Design",
+            image: "/portfolio-images/ittisam.webp",
+            description: "Modern Save the Date design for a Groom"
+
+        },
+        {
+            title: "Save the Date Design",
+            image: "/portfolio-images/mal hassan.webp",
+            description: "Modern Save the Date design for a Groom"
+
+        },
+        {
+            title: "Save the Date Design",
+            image: "/portfolio-images/maryam n.webp",
+            description: "Modern Save the Date design for a Groom"
+
+        },
+        {
+            title: "Save the Date Design",
+            image: "/portfolio-images/pasta.webp",
+            description: "Modern Save the Date design for a Groom"
+
+        },
+        {
+            title: "Save the Date Design",
+            image: "/portfolio-images/tiktok.webp",
+            description: "Modern Save the Date design for a Groom"
+
+        },
+        {
+            title: "Save the Date Design",
+            image: "/portfolio-images/transfer.webp",
+            description: "Modern Save the Date design for a Groom"
+
+        },
+        {
+            title: "Save the Date Design",
+            image: "/portfolio-images/asb.webp",
+            description: "Modern Save the Date design for a Groom"
+
+        },
     ];
 
     container.innerHTML = items.map(item => `

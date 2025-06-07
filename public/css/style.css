@@ -388,7 +388,7 @@ footer {
     border: 2px solid var(--primary-dark);
 }
 
-/* Hover effects using your brand colors */
+/* Hover effects  */
 .whatsapp:hover {
     background-color: var(--primary-accent);
 }

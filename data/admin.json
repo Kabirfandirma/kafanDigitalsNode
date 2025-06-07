@@ -6,7 +6,7 @@
       "photo": null,
       "message": "Great Work",
       "date": "2025-06-06T23:19:01.482Z",
-      "approved": false
+      "approved": true
     },
     {
       "id": "1749251338147",
@@ -14,7 +14,7 @@
       "photo": null,
       "message": "U really deserved my five stars ✨ ",
       "date": "2025-06-06T23:08:58.147Z",
-      "approved": false
+      "approved": true
     },
     {
       "id": "1749250448584",
@@ -22,7 +22,7 @@
       "photo": null,
       "message": "Nice to work with you",
       "date": "2025-06-06T22:54:08.584Z",
-      "approved": false
+      "approved": true
     },
     {
       "id": "1749249393499",
@@ -30,7 +30,7 @@
       "photo": null,
       "message": "Thank you Kafan Digitals",
       "date": "2025-06-06T22:36:33.499Z",
-      "approved": false
+      "approved": true
     },
     {
       "id": "1749249097460",
@@ -38,7 +38,7 @@
       "photo": null,
       "message": "Thanks for making my brand stand out",
       "date": "2025-06-06T22:31:37.460Z",
-      "approved": false
+      "approved": true
     }
   ]
 }
