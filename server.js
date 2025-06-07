@@ -211,10 +211,18 @@ app.post('/api/portfolio', (req, res) => {
 // Admin routes
 app.post('/admin/login', (req, res) => {
     const { password } = req.body;
+
+    // Simple check - no changes needed here
     if (password === ADMIN_PASSWORD) {
-        res.json({ success: true, token: "admin-auth-token" });
+        res.json({
+            success: true,
+            message: "Login successful!"
+        });
     } else {
-        res.status(401).json({ success: false, message: "Invalid password" });
+        res.status(401).json({
+            success: false,
+            message: "Wrong password!"
+        });
     }
 });
 

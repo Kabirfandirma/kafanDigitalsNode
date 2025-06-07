@@ -18,36 +18,38 @@ function checkAdminSession() {
     }
 }
 
-async function handleLogin() {
-    const password = document.getElementById('admin-password').value.trim();
+// Login button - simple version
+document.getElementById('login-btn').addEventListener('click', function () {
+    const password = document.getElementById('admin-password').value;
 
-    if (!password) {
-        showAlert('Please enter your password', 'danger');
-        return;
-    }
+    // Show loading spinner
+    this.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Checking...';
 
-    try {
-        const response = await fetch('/admin/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ password })
+    fetch('/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: password })
+    })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                // Login success!
+                localStorage.setItem('isAdmin', 'true');
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('admin-panel').style.display = 'block';
+                showAlert('Welcome Admin!', 'success');
+            } else {
+                showAlert(data.message || 'Wrong password!', 'danger');
+            }
+        })
+        .catch(error => {
+            showAlert('Login failed. Try again later.', 'danger');
+        })
+        .finally(() => {
+            // Reset button text
+            document.getElementById('login-btn').textContent = 'Login';
         });
-
-        if (!response.ok) {
-            const error = await response.json();
-            throw new Error(error.message || 'Login failed');
-        }
-
-        localStorage.setItem('adminAuthenticated', 'true');
-        adminAuthenticated = true;
-        showAdminPanel();
-        loadAllTestimonials();
-        loadPortfolioItems();
-        showAlert('Login successful', 'success');
-    } catch (error) {
-        showAlert(error.message || 'Login failed. Please try again.', 'danger');
-    }
-}
+});
 
 async function handlePortfolioSubmit(e) {
     e.preventDefault();
