@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('add-portfolio-form')?.addEventListener('submit', handlePortfolioSubmit);
 });
 
-// Improved session checking
+// Check admin session from localStorage
 function checkAdminSession() {
     const authToken = localStorage.getItem('adminAuthenticated');
     if (authToken === 'true') {
@@ -18,6 +18,7 @@ function checkAdminSession() {
     }
 }
 
+// Login handler
 async function handleLogin() {
     const password = document.getElementById('admin-password').value.trim();
 
@@ -49,9 +50,13 @@ async function handleLogin() {
     }
 }
 
-// Event listener
-document.getElementById('login-btn').addEventListener('click', handleLogin);
+// Show admin panel and hide login
+function showAdminPanel() {
+    document.getElementById('login-section')?.classList.add('d-none');
+    document.getElementById('admin-panel')?.classList.remove('d-none');
+}
 
+// Submit portfolio form
 async function handlePortfolioSubmit(e) {
     e.preventDefault();
     const form = e.target;
@@ -87,7 +92,7 @@ async function handlePortfolioSubmit(e) {
     }
 }
 
-// Improved delete function with better error handling
+// Delete portfolio item
 async function deletePortfolioItem(id) {
     if (!adminAuthenticated || !confirm('Delete this portfolio item?')) return;
 
@@ -104,7 +109,6 @@ async function deletePortfolioItem(id) {
             body: JSON.stringify({ password, id })
         });
 
-        // Check if response is HTML instead of JSON
         const contentType = response.headers.get('content-type');
         if (!contentType || !contentType.includes('application/json')) {
             const text = await response.text();
@@ -123,4 +127,17 @@ async function deletePortfolioItem(id) {
         showAlert('Delete failed: ' + error.message, 'danger');
         console.error('Delete error:', error);
     }
+}
+
+// Utility function for showing alerts
+function showAlert(message, type = 'info') {
+    const container = document.getElementById('admin-alerts');
+    if (!container) return;
+
+    container.innerHTML = `
+        <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    `;
 }

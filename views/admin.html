@@ -52,22 +52,23 @@
                 <form id="add-portfolio-form" class="mb-4">
                     <div class="row g-3">
                         <div class="col-md-4">
-                            <label class="form-label">Title</label>
-                            <input type="text" class="form-control" required>
+                            <label for="portfolio-title" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="portfolio-title" required>
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label">Image URL</label>
-                            <input type="url" class="form-control" required>
+                            <label for="portfolio-image" class="form-label">Image URL</label>
+                            <input type="url" class="form-control" id="portfolio-image" required>
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label">Description</label>
-                            <input type="text" class="form-control" required>
+                            <label for="portfolio-description" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="portfolio-description" required>
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary">Add Item</button>
                         </div>
                     </div>
                 </form>
+
                 <div class="row" id="portfolio-items-admin">
                     <!-- My Portfolio items will be here -->
                 </div>
