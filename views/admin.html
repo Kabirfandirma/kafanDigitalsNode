@@ -1,40 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Admin Panel</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafan Digitals Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            padding: 20px;
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-    <div class="container">
-        <!-- Login Section -->
+    <div id="admin-alerts" class="container mt-3"></div>
+    <div class="admin-container container py-5">
+        <h1 class="text-center mb-5">Admin Panel</h1>
+
         <div id="login-section">
-            <h2>Admin Login</h2>
-            <div class="mb-3">
-                <label>Password:</label>
-                <input type="password" id="admin-password" class="form-control">
+            <div class="card p-4 mx-auto" style="max-width: 400px;">
+                <h3 class="mb-4">Admin Login</h3>
+                <div class="mb-3">
+                    <label for="admin-password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="admin-password">
+                </div>
+                <button id="login-btn" class="btn btn-primary">Login</button>
             </div>
-            <button id="login-btn" class="btn btn-primary">Login</button>
         </div>
 
-        <!-- Admin Panel (hidden by default) -->
-        <div id="admin-panel" class="hidden">
-            <h1>Admin Dashboard</h1>
-            <!-- Your admin content here -->
-            <p>Welcome to your admin panel!</p>
+        <div id="admin-panel" class="d-none">
+            <!-- Testimonials Management -->
+            <section class="mb-5">
+                <h2>Manage Testimonials</h2>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Message</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="testimonials-list">
+                            <!-- Testimonials will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Portfolio Management -->
+            <section>
+                <h2>Manage Portfolio</h2>
+                <form id="add-portfolio-form" class="mb-4">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Title</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Image URL</label>
+                            <input type="url" class="form-control" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Description</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Add Item</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="row" id="portfolio-items-admin">
+                    <!-- Portfolio items will be loaded here -->
+                </div>
+            </section>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/admin.js"></script>
 </body>
 
