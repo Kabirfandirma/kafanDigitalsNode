@@ -50,12 +50,6 @@ async function handleLogin() {
     }
 }
 
-// Show admin panel and hide login
-function showAdminPanel() {
-    document.getElementById('login-section')?.classList.add('d-none');
-    document.getElementById('admin-panel')?.classList.remove('d-none');
-}
-
 // Submit portfolio form
 async function handlePortfolioSubmit(e) {
     e.preventDefault();

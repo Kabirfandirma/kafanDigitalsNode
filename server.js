@@ -171,10 +171,11 @@ app.post('/submit-testimonial', (req, res) => {
     transporter.sendMail({
         from: process.env.EMAIL_USER,
         to: process.env.EMAIL_USER,
+        replyTo: email,
         subject: 'New Testimonial Needs Approval',
         html: `<p>New testimonial from ${name}:</p>
           <p>${message}</p>
-          <p><a href="${DOMAIN}/admin">Review now</a></p>`
+          <p><a href="${DOMAIN}/admin">Review now</a></p>`,
     }).catch(err => console.log('Email notify error:', err));
 
     res.json({
