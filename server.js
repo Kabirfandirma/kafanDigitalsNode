@@ -1,4 +1,5 @@
 require('dotenv').config();
+const DOMAIN = process.env.DOMAIN || 'https://kafandigitalsn.onrender.com';
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -162,9 +163,9 @@ app.post('/submit-testimonial', (req, res) => {
         from: process.env.EMAIL_USER,
         to: process.env.EMAIL_USER,
         subject: 'New Testimonial Needs Approval',
-        html: `<p>New testimonial from ${name} needs approval:</p>
-              <p>${message}</p>
-              <p><a href="http://localhost:${PORT}/admin">Review now</a></p>`
+        html: `<p>New testimonial from ${name}:</p>
+          <p>${message}</p>
+          <p><a href="${DOMAIN}/admin">Review now</a></p>`
     }).catch(err => console.log('Email notify error:', err));
 
     res.json({
@@ -254,7 +255,27 @@ app.post('/admin/reject-testimonial', (req, res) => {
     res.json({ success: true });
 });
 
-// ... (keep all your existing code until the testimonials routes)
+app.post('/admin/delete-portfolio', (req, res) => {
+    const { password, id } = req.body;
+
+    if (password !== ADMIN_PASSWORD) {
+        return res.status(401).json({ success: false, message: "Invalid password" });
+    }
+
+    try {
+        const portfolio = readPortfolio();
+        const updatedPortfolio = portfolio.filter(item => item.id !== id);
+        writePortfolio(updatedPortfolio);
+
+        res.json({ success: true });
+    } catch (error) {
+        console.error('Delete portfolio error:', error);
+        res.status(500).json({
+            success: false,
+            message: "Server error during deletion"
+        });
+    }
+});
 
 // Testimonials
 app.get('/testimonials', (req, res) => {
@@ -320,7 +341,7 @@ app.post('/submit-testimonial', (req, res) => {
     });
 });
 
-// ... (keep all your existing code after this point)
+
 // Contact form
 app.post('/send-message', async (req, res) => {
     const { name, email, subject, message } = req.body;
