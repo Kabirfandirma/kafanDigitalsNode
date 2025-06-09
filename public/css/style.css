@@ -39,6 +39,45 @@ body {
     color: var(--primary-accent);
 }
 
+/* Video Style */
+
+video {
+    width: 90%;
+    max-width: 800px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    outline: none;
+    align-items: center;
+}
+
+.download-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: #ff820c;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background 0.3s;
+
+}
+
+.video-section {
+
+    color: var(--primary-accent);
+}
+
+.lead {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.download-btn:hover {
+    background-color: #0a352c;
+}
+
 /* Hero Section */
 .hero-section {
     position: relative;
