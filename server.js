@@ -5,9 +5,22 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const fs = require('fs');
+const multer = require('multer');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Upload config
+const uploadDir = path.join(__dirname, 'public/uploads');
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+}
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => cb(null, uploadDir),
+    filename: (req, file, cb) => cb(null, Date.now() + '-' + file.originalname)
+});
+const upload = multer({ storage });
 
 // Middleware
 app.use(express.static(path.join(__dirname, 'public')));
@@ -38,9 +51,7 @@ transporter.verify(function (error) {
 
 // Data storage
 const dataPath = path.join(__dirname, 'data');
-if (!fs.existsSync(dataPath)) {
-    fs.mkdirSync(dataPath);
-}
+if (!fs.existsSync(dataPath)) fs.mkdirSync(dataPath);
 
 const testimonialsFile = path.join(dataPath, 'testimonials.json');
 const portfolioFile = path.join(dataPath, 'portfolio.json');
@@ -79,9 +90,7 @@ if (!fs.existsSync(portfolioFile)) {
 }
 
 if (!fs.existsSync(adminFile)) {
-    fs.writeFileSync(adminFile, JSON.stringify({
-        pendingTestimonials: []
-    }));
+    fs.writeFileSync(adminFile, JSON.stringify({ pendingTestimonials: [] }));
 }
 
 function readTestimonials() {
@@ -176,32 +185,27 @@ app.get('/api/portfolio', (req, res) => {
     res.json(readPortfolio());
 });
 
-app.post('/api/portfolio', (req, res) => {
-    const { title, image, description } = req.body;
+// ✅ New route using multer for image file upload
+app.post('/api/upload', upload.single('image'), (req, res) => {
+    const { title, description } = req.body;
+    const file = req.file;
 
-    if (!title || !image || !description) {
-        return res.status(400).json({
-            success: false,
-            message: 'All fields are required'
-        });
+    if (!title || !description || !file) {
+        return res.status(400).json({ success: false, message: 'Missing fields or image' });
     }
 
     const portfolio = readPortfolio();
     const newItem = {
         id: Date.now().toString(),
         title,
-        image,
-        description
+        description,
+        image: '/uploads/' + file.filename
     };
 
     portfolio.unshift(newItem);
     writePortfolio(portfolio);
 
-    res.json({
-        success: true,
-        message: 'Portfolio item added!',
-        item: newItem
-    });
+    res.json({ success: true, message: 'Portfolio item added!', item: newItem });
 });
 
 app.post('/admin/login', (req, res) => {

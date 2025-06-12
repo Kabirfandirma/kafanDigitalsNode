@@ -56,19 +56,21 @@
             <!-- Portfolio Management -->
             <section>
                 <h2>Manage Portfolio</h2>
-                <form id="add-portfolio-form" class="mb-4">
+                <form id="add-portfolio-form" class="mb-4" enctype="multipart/form-data">
                     <div class="row g-3">
                         <div class="col-md-4">
                             <label for="portfolio-title" class="form-label">Title</label>
-                            <input type="text" class="form-control" id="portfolio-title" required>
+                            <input type="text" class="form-control" id="portfolio-title" name="title" required>
                         </div>
                         <div class="col-md-4">
-                            <label for="portfolio-image" class="form-label">Image URL</label>
-                            <input type="url" class="form-control" id="portfolio-image" required>
+                            <label for="portfolio-image" class="form-label">Upload Image</label>
+                            <input type="file" class="form-control" id="portfolio-image" name="image" accept="image/*"
+                                required>
                         </div>
                         <div class="col-md-4">
                             <label for="portfolio-description" class="form-label">Description</label>
-                            <input type="text" class="form-control" id="portfolio-description" required>
+                            <input type="text" class="form-control" id="portfolio-description" name="description"
+                                required>
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary">Add Item</button>

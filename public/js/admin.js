@@ -145,39 +145,41 @@ async function rejectTestimonial(id) {
     }
 }
 
-// Submit portfolio form
+// Submit portfolio form (with file upload)
 async function handlePortfolioSubmit(e) {
     e.preventDefault();
     const form = e.target;
+    const title = form.querySelector('#portfolio-title').value.trim();
+    const description = form.querySelector('#portfolio-description').value.trim();
+    const fileInput = form.querySelector('#portfolio-image');
 
-    const formData = {
-        title: form.querySelector('#portfolio-title').value.trim(),
-        image: form.querySelector('#portfolio-image').value.trim(),
-        description: form.querySelector('#portfolio-description').value.trim()
-    };
-
-    if (!formData.title || !formData.image || !formData.description) {
-        showAlert('Please fill all fields', 'danger');
+    if (!title || !description || !fileInput.files.length) {
+        showAlert('Please fill all fields and select an image file', 'danger');
         return;
     }
 
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('image', fileInput.files[0]);
+
     try {
-        const response = await fetch('/api/portfolio', {
+        const response = await fetch('/api/upload', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
+            body: formData
         });
 
-        if (!response.ok) {
-            const error = await response.json();
-            throw new Error(error.message || 'Failed to add item');
+        const result = await response.json();
+        if (result.success) {
+            showAlert('Portfolio item added successfully!', 'success');
+            form.reset();
+            loadPortfolioItems();
+        } else {
+            throw new Error(result.message || 'Failed to add item');
         }
-
-        showAlert('Portfolio item added!', 'success');
-        form.reset();
-        loadPortfolioItems();
     } catch (error) {
-        showAlert(error.message || 'Failed to add portfolio item', 'danger');
+        showAlert(error.message || 'Upload failed', 'danger');
+        console.error(error);
     }
 }
 
