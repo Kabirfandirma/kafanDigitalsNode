@@ -11,9 +11,11 @@
 
 <body>
     <div id="admin-alerts" class="container mt-3"></div>
-    <div class="admin-container container py-5">
-        <h1 class="text-center mb-5">Admin Panel</h1>
 
+    <div class="admin-container container py-5">
+        <h1 class="text-center mb-5">Kafan Digitals</h1>
+
+        <!-- Admin Login Section -->
         <div id="login-section">
             <div class="card p-4 mx-auto" style="max-width: 400px;">
                 <h3 class="mb-4">Admin Login</h3>
@@ -25,7 +27,12 @@
             </div>
         </div>
 
+        <!-- Admin Panel Section -->
         <div id="admin-panel" class="d-none">
+            <div class="text-end mb-4">
+                <button id="logout-btn" class="btn btn-outline-danger">Logout</button>
+            </div>
+
             <!-- Testimonials Management -->
             <section class="mb-5">
                 <h2>Manage Testimonials</h2>
@@ -40,7 +47,7 @@
                             </tr>
                         </thead>
                         <tbody id="testimonials-list">
-                            <!-- My Testimonials will be here -->
+                            <!-- Testimonials dynamically inserted here -->
                         </tbody>
                     </table>
                 </div>
@@ -70,12 +77,13 @@
                 </form>
 
                 <div class="row" id="portfolio-items-admin">
-                    <!-- My Portfolio items will be here -->
+                    <!-- Portfolio items dynamically inserted here -->
                 </div>
             </section>
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/admin.js"></script>
 </body>

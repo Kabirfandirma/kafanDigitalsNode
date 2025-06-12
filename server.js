@@ -42,7 +42,6 @@ if (!fs.existsSync(dataPath)) {
     fs.mkdirSync(dataPath);
 }
 
-// Initialize data files if they don't exist
 const testimonialsFile = path.join(dataPath, 'testimonials.json');
 const portfolioFile = path.join(dataPath, 'portfolio.json');
 const adminFile = path.join(dataPath, 'admin.json');
@@ -85,7 +84,6 @@ if (!fs.existsSync(adminFile)) {
     }));
 }
 
-// Helper functions for data management
 function readTestimonials() {
     return JSON.parse(fs.readFileSync(testimonialsFile));
 }
@@ -109,16 +107,7 @@ function readAdminData() {
 function writeAdminData(data) {
     fs.writeFileSync(adminFile, JSON.stringify(data, null, 2));
 }
-// Admin login route
-app.post('/admin/login', (req, res) => {
-    const { password } = req.body;
 
-    if (password === process.env.ADMIN_PASSWORD) {
-        res.json({ success: true });
-    } else {
-        res.status(401).json({ success: false });
-    }
-});
 // Admin authentication
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "kafanadmin123";
 
@@ -128,7 +117,6 @@ app.get('/portfolio', (req, res) => res.render('portfolio', { portfolio: readPor
 app.get('/contact', (req, res) => res.render('contact'));
 app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'views/admin.html')));
 
-// Testimonials
 app.get('/testimonials', (req, res) => {
     res.render('testimonials', {
         testimonials: readTestimonials().filter(t => t.approved)
@@ -145,7 +133,7 @@ app.get('/api/pending-testimonials', (req, res) => {
 });
 
 app.post('/submit-testimonial', (req, res) => {
-    const { name, photo, message } = req.body;
+    const { name, photo, message, email } = req.body;
 
     if (!name || !message) {
         return res.status(400).json({
@@ -167,15 +155,14 @@ app.post('/submit-testimonial', (req, res) => {
     adminData.pendingTestimonials.unshift(newTestimonial);
     writeAdminData(adminData);
 
-    // Email notification
     transporter.sendMail({
         from: process.env.EMAIL_USER,
         to: process.env.EMAIL_USER,
         replyTo: email,
         subject: 'New Testimonial Needs Approval',
         html: `<p>New testimonial from ${name}:</p>
-          <p>${message}</p>
-          <p><a href="${DOMAIN}/admin">Review now</a></p>`,
+               <p>${message}</p>
+               <p><a href="${DOMAIN}/admin">Review now</a></p>`,
     }).catch(err => console.log('Email notify error:', err));
 
     res.json({
@@ -185,7 +172,6 @@ app.post('/submit-testimonial', (req, res) => {
     });
 });
 
-// Portfolio API
 app.get('/api/portfolio', (req, res) => {
     res.json(readPortfolio());
 });
@@ -218,21 +204,13 @@ app.post('/api/portfolio', (req, res) => {
     });
 });
 
-// Admin routes
 app.post('/admin/login', (req, res) => {
     const { password } = req.body;
 
-    // Simple check 
     if (password === ADMIN_PASSWORD) {
-        res.json({
-            success: true,
-            message: "Login successful!"
-        });
+        res.json({ success: true, message: "Login successful!" });
     } else {
-        res.status(401).json({
-            success: false,
-            message: "Wrong password!"
-        });
+        res.status(401).json({ success: false, message: "Wrong password!" });
     }
 });
 
@@ -295,17 +273,6 @@ app.post('/admin/delete-portfolio', (req, res) => {
     }
 });
 
-// Testimonials
-app.get('/testimonials', (req, res) => {
-    res.render('testimonials', {
-        testimonials: readTestimonials().filter(t => t.approved)
-    });
-});
-
-app.get('/api/testimonials', (req, res) => {
-    res.json(readTestimonials().filter(t => t.approved));
-});
-
 app.get('/api/admin/testimonials', (req, res) => {
     const allTestimonials = {
         approved: readTestimonials().filter(t => t.approved),
@@ -314,52 +281,6 @@ app.get('/api/admin/testimonials', (req, res) => {
     res.json(allTestimonials);
 });
 
-app.post('/submit-testimonial', (req, res) => {
-    const { name, photo, message } = req.body;
-
-    if (!name || !message) {
-        return res.status(400).json({
-            success: false,
-            message: 'Name and message are required'
-        });
-    }
-
-    const adminData = readAdminData();
-    const newTestimonial = {
-        id: Date.now().toString(),
-        name,
-        photo: photo || null,
-        message,
-        date: new Date().toISOString(),
-        approved: false
-    };
-
-    adminData.pendingTestimonials.unshift(newTestimonial);
-    writeAdminData(adminData);
-
-
-    const testimonials = readTestimonials();
-    testimonials.unshift(newTestimonial);
-    writeTestimonials(testimonials);
-
-    transporter.sendMail({
-        from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER,
-        subject: 'New Testimonial Needs Approval',
-        html: `<p>New testimonial from ${name}:</p>
-              <p>${message}</p>
-              <p><a href="http://localhost:${PORT}/admin">Review now</a></p>`
-    }).catch(err => console.log('Email notify error:', err));
-
-    res.json({
-        success: true,
-        message: 'Thank you! Your testimonial will appear after approval.',
-        testimonial: newTestimonial
-    });
-});
-
-
-// Contact form
 app.post('/send-message', async (req, res) => {
     const { name, email, subject, message } = req.body;
 
@@ -371,20 +292,17 @@ app.post('/send-message', async (req, res) => {
     }
 
     try {
-        const info = await transporter.sendMail({
+        await transporter.sendMail({
             from: `"Kafan Digitals" <${process.env.EMAIL_USER}>`,
             replyTo: `"${name}" <${email}>`,
             to: process.env.EMAIL_USER,
             subject: `Contact: ${subject}`,
             html: `<p>From: ${name} (${email})</p>
-                  <p>Subject: ${subject}</p>
-                  <p>${message.replace(/\n/g, '<br>')}</p>`
+                   <p>Subject: ${subject}</p>
+                   <p>${message.replace(/\n/g, '<br>')}</p>`
         });
 
-        res.json({
-            success: true,
-            message: 'Message sent successfully!'
-        });
+        res.json({ success: true, message: 'Message sent successfully!' });
     } catch (error) {
         console.error('Email error:', error);
         res.status(500).json({

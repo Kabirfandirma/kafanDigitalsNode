@@ -17,6 +17,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const form = document.getElementById('contactForm');
         if (form) form.addEventListener('submit', submitContactForm);
     }
+
+    // Set year in footer
+    const yearElement = document.getElementById('year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
 });
 
 // Portfolio functions
@@ -25,126 +31,26 @@ function loadPortfolioItems() {
     if (!container) return;
 
     const items = [
-        {
-            title: "School Flyer Design",
-            image: "/portfolio-images/weekend.webp",
-            description: "Modern Flyer design for a School"
-
-        },
-        {
-            title: "Brand ID Design",
-            image: "/portfolio-images/amina.webp",
-            description: "Brand Identity design for a company"
-
-        },
-        {
-            title: "Business Flyer Design",
-            image: "/portfolio-images/Assunniy.webp",
-            description: "Modern business flyer design"
-
-        },
-        {
-            title: "Eid Flyer Design",
-            image: "/portfolio-images/atamfa.webp",
-            description: "Modern Flyer design for Eid"
-
-        },
-        {
-            title: "Business Flyer Design",
-            image: "/portfolio-images/bazanba.webp",
-            description: "Modern Business Flyer design"
-
-        },
-        {
-            title: "Poster Design",
-            image: "/portfolio-images/Beli.webp",
-            description: "Modern poster design for a politician"
-
-        },
-        {
-            title: "Save the Date Design",
-            image: "/portfolio-images/bin fussar.webp",
-            description: "Modern Save the Date design for a Groom"
-
-        },
-        {
-            title: "Save the Date Design",
-            image: "/portfolio-images/dankama.webp",
-            description: "Modern Save the Date design for a Groom"
-
-        },
-        {
-            title: "Save the Date Design",
-            image: "/portfolio-images/emeralld.webp",
-            description: "Modern Save the Date design for a Groom"
-
-        },
-        {
-            title: "Save the Date Design",
-            image: "/portfolio-images/exchange.webp",
-            description: "Modern Save the Date design for a Groom"
-
-        },
-        {
-            title: "Save the Date Design",
-            image: "/portfolio-images/FASHION.webp",
-            description: "Modern Save the Date design for a Groom"
-
-        },
-        {
-            title: "Save the Date Design",
-            image: "/portfolio-images/fitra.webp",
-            description: "Modern Save the Date design for a Groom"
-
-        },
-        {
-            title: "Save the Date Design",
-            image: "/portfolio-images/gas fee.webp",
-            description: "Modern Save the Date design for a Groom"
-
-        },
-        {
-            title: "Save the Date Design",
-            image: "/portfolio-images/ittisam.webp",
-            description: "Modern Save the Date design for a Groom"
-
-        },
-        {
-            title: "Save the Date Design",
-            image: "/portfolio-images/mal hassan.webp",
-            description: "Modern Save the Date design for a Groom"
-
-        },
-        {
-            title: "Save the Date Design",
-            image: "/portfolio-images/maryam n.webp",
-            description: "Modern Save the Date design for a Groom"
-
-        },
-        {
-            title: "Save the Date Design",
-            image: "/portfolio-images/pasta.webp",
-            description: "Modern Save the Date design for a Groom"
-
-        },
-        {
-            title: "Save the Date Design",
-            image: "/portfolio-images/tiktok.webp",
-            description: "Modern Save the Date design for a Groom"
-
-        },
-        {
-            title: "Save the Date Design",
-            image: "/portfolio-images/transfer.webp",
-            description: "Modern Save the Date design for a Groom"
-
-        },
-        {
-            title: "Save the Date Design",
-            image: "/portfolio-images/asb.webp",
-            description: "Modern Save the Date design for a Groom"
-
-        },
+        { title: "School Flyer Design", image: "/portfolio-images/weekend.webp", description: "Modern Flyer design for a School" },
+        { title: "Brand Identity Package", image: "/portfolio-images/amina.webp", description: "Brand Identity design for a company" },
+        { title: "Corporate Flyer", image: "/portfolio-images/Assunniy.webp", description: "Modern business flyer design" },
+        { title: "Eid Celebration Design", image: "/portfolio-images/atamfa.webp", description: "Modern Flyer design for Eid" },
+        { title: "Marketing Poster", image: "/portfolio-images/bazanba.webp", description: "Modern Business Flyer design" },
+        { title: "Political Campaign Poster", image: "/portfolio-images/Beli.webp", description: "Modern poster design for a politician" },
+        { title: "Wedding Invitation Design", image: "/portfolio-images/bin fussar.webp", description: "Stylish wedding invite design" },
+        { title: "Engagement Card Design", image: "/portfolio-images/dankama.webp", description: "Elegant design for engagement announcement" },
+        { title: "Groom's Event Flyer", image: "/portfolio-images/emeralld.webp", description: "Creative flyer for a groom's ceremony" },
+        { title: "Digital Business Poster", image: "/portfolio-images/exchange.webp", description: "Clean business poster design" },
+        { title: "Fashion Brand Flyer", image: "/portfolio-images/FASHION.webp", description: "Flyer design for a fashion label" },
+        { title: "Charity Event Poster", image: "/portfolio-images/fitra.webp", description: "Flyer for Ramadan charity event" },
+        { title: "Crypto Service Promo", image: "/portfolio-images/gas fee.webp", description: "Crypto gas fee awareness flyer" },
+        { title: "Corporate Branding Card", image: "/portfolio-images/ittisam.webp", description: "Professional branding card design" },
+        { title: "Tech Seminar Poster", image: "/portfolio-images/mal hassan.webp", description: "Poster for a technology event" },
+        { title: "Ladies' Event Invite", image: "/portfolio-images/maryam n.webp", description: "Save the Date for ladies' conference" },
+        { title: "Food Service Flyer", image: "/portfolio-images/pasta.webp", description: "Flyer design for a pasta restaurant" },
+        { title: "Social Media Campaign", image: "/portfolio-images/tiktok.webp", description: "Poster design for TikTok event" },
+        { title: "Finance Platform Flyer", image: "/portfolio-images/transfer.webp", description: "Flyer for a money transfer app" },
+        { title: "Startup Pitch Poster", image: "/portfolio-images/asb.webp", description: "Modern poster for business pitch" }
     ];
 
     container.innerHTML = items.map(item => `
@@ -173,8 +79,7 @@ function loadTestimonials() {
                     <div class="testimonial-card">
                         <div class="d-flex testimonial-content">
                             ${testimonial.photo ?
-                        `<img src="${testimonial.photo}" class="testimonial-photo" alt="${testimonial.name}">`
-                        : ''}
+                        `<img src="${testimonial.photo}" class="testimonial-photo" alt="${testimonial.name}">` : ''}
                             <div>
                                 <h3>${testimonial.name}</h3>
                                 <p>${testimonial.message}</p>
@@ -265,10 +170,3 @@ function validateForm(data) {
     return data.name && data.subject && data.message &&
         data.email && emailRegex.test(data.email);
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-    const yearElement = document.getElementById('year');
-    if (yearElement) {
-        yearElement.textContent = new Date().getFullYear();
-    }
-});
