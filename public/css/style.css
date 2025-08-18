@@ -27,9 +27,8 @@ code,
 pre {
   font-family: "Roboto Mono", monospace;
 }
-*/
 
-/* Navigation
+/* Navigation styles */
 .navbar {
   position: sticky;
   top: 0;
