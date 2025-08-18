@@ -64,6 +64,12 @@ pre {
   color: var(--primary-accent);
 }
 
+@media (min-width: 992px) {
+  .navbar-toggler {
+    display: none !important;
+  }
+}
+
 /* Video Style */
 
 video {
