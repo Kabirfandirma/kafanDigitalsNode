@@ -17,18 +17,19 @@ body {
   background-color: var(--primary-light);
 }
 
-/* h1,
+h1,
 h2,
 h3 {
   font-family: "Space Mono", monospace;
-} */
+}
 
-/* code,
+code,
 pre {
   font-family: "Roboto Mono", monospace;
-} */
+}
+*/
 
-/* Navigation */
+/* Navigation
 .navbar {
   position: sticky;
   top: 0;
