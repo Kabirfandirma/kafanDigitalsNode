@@ -272,6 +272,8 @@ function validateForm(data) {
   );
 }
 
+// Scroll event for navbar shrink effect
+
 window.addEventListener("scroll", function () {
   const navbar = document.querySelector(".navbar");
 
