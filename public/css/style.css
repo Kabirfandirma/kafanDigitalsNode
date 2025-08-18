@@ -11,10 +11,21 @@
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Baloo 2", cursive;
   line-height: 1.6;
   color: var(--text-dark);
   background-color: var(--primary-light);
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Space Mono", monospace;
+}
+
+code,
+pre {
+  font-family: "Roboto Mono", monospace;
 }
 
 /* Navigation */
