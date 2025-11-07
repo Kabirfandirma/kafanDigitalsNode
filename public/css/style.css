@@ -11,10 +11,15 @@
 }
 
 body {
-  font-family: "Baloo 2", cursive;
-  line-height: 1.6;
+  font-family: "Poppins", "Baloo 2", sans-serif;
+  line-height: 1.8;
   color: var(--text-dark);
   background-color: var(--primary-light);
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 h1,
