@@ -93,12 +93,12 @@
         <div class="flex justify-between items-center">
           <div class="flex items-center space-x-3">
             <div
-              class="w-12 h-12 rounded-2xl bg-gradient-to-br from-kafan-purple to-kafan-accent flex items-center justify-center shadow-lg"
+              class="w-9 h-9 rounded-2xl bg-white flex items-center justify-center shadow-lg"
             >
               <img
                 src="/images/Kafan Digitals Logo.png"
                 alt="Kafan Digitals Logo"
-                class="h-10 w-10 object-contain"
+                class="h-30 w-30 object-contain"
               />
             </div>
             <a href="/" class="font-space font-bold text-2xl text-gradient"
@@ -198,79 +198,105 @@
 
     <!-- Hero Section -->
     <section
-      class="min-h-screen flex items-center justify-center pt-20 pb-16 bg-gradient-radial relative overflow-hidden"
+      class="min-h-screen flex items-center justify-center pt-16 pb-12 md:pt-20 md:pb-16 bg-gradient-radial relative overflow-hidden"
     >
       <div
-        class="absolute top-10 right-10 w-72 h-72 bg-kafan-accent/10 rounded-full blur-3xl animate-float"
+        class="absolute top-5 right-5 w-48 h-48 md:top-10 md:right-10 md:w-72 md:h-72 bg-kafan-accent/10 rounded-full blur-2xl md:blur-3xl animate-float"
       ></div>
       <div
-        class="absolute bottom-10 left-10 w-96 h-96 bg-kafan-purple/10 rounded-full blur-3xl animate-float"
+        class="absolute bottom-5 left-5 w-64 h-64 md:bottom-10 md:left-10 md:w-96 md:h-96 bg-kafan-purple/10 rounded-full blur-2xl md:blur-3xl animate-float"
         style="animation-delay: 2s"
       ></div>
 
       <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 mt-4"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 mt-8 md:mt-4"
       >
+        <!-- Badge -->
         <div
-          class="inline-flex items-center space-x-2 bg-kafan-light px-4 py-2 rounded-full mb-8 border border-gray-200 shadow-sm"
+          class="inline-flex items-center space-x-2 bg-kafan-light px-3 py-1.5 md:px-4 md:py-2 rounded-full mb-6 md:mb-8 border border-gray-200 shadow-sm mx-auto"
         >
           <span
-            class="w-2 h-2 bg-kafan-accent rounded-full animate-glow"
+            class="w-1.5 h-1.5 md:w-2 md:h-2 bg-kafan-accent rounded-full animate-glow"
           ></span>
-          <span class="text-sm font-medium text-kafan-dark"
+          <span class="text-xs md:text-sm font-medium text-kafan-dark"
             >Kafan Digital Solutions</span
           >
         </div>
 
+        <!-- Main Heading -->
         <h1
-          class="text-5xl md:text-7xl lg:text-8xl font-space font-bold mb-6 leading-tight"
+          class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-space font-bold mb-4 md:mb-6 leading-tight"
         >
-          <span class="text-gradient">...One Stop</span>
-          <span class="block">Every Digital</span>
-          <span class="text-gradient">Solutions</span>
+          <span
+            class="text-gradient block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
+            >..One Stop</span
+          >
+          <span
+            class="block text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl mt-2 md:mt-4"
+            >Every Digital</span
+          >
+          <span
+            class="text-gradient block text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl mt-2 md:mt-4"
+            >Solutions</span
+          >
         </h1>
 
-        <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-12">
+        <!-- Description -->
+        <p
+          class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-2xl md:max-w-3xl mx-auto mb-8 md:mb-12 px-4 sm:px-0"
+        >
           We craft stunning digital experiences that captivate audiences and
-          drive results. Your vision, our expertise—let's create something
+          drive results. Your vision, our expertise. Let's create something
           extraordinary.
         </p>
 
-        <div class="flex flex-col sm:flex-row justify-center gap-5 mb-16">
+        <!-- CTA Buttons -->
+        <div
+          class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 md:gap-5 mb-12 md:mb-16 px-4 sm:px-0"
+        >
           <a
             href="/portfolio"
-            class="group bg-gradient-to-r from-kafan-purple to-kafan-accent text-white px-8 py-4 rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
+            class="group bg-gradient-to-r from-kafan-purple to-kafan-accent text-white px-6 py-3 sm:px-7 sm:py-3.5 md:px-8 md:py-4 rounded-xl md:rounded-2xl font-semibold shadow-lg md:shadow-xl hover:shadow-xl md:hover:shadow-2xl transition-all duration-300 hover:scale-105 flex items-center justify-center text-sm sm:text-base"
           >
             <span>Explore Our Work</span>
             <i
-              class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300"
+              class="fas fa-arrow-right ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform duration-300 text-xs sm:text-sm"
             ></i>
           </a>
           <a
             href="#intro"
-            class="group border-2 border-kafan-purple/20 text-kafan-dark bg-white/80 px-8 py-4 rounded-2xl font-semibold backdrop-blur-sm hover:bg-kafan-purple hover:text-white hover:border-kafan-purple transition-all duration-300 flex items-center justify-center"
+            class="group border border-kafan-purple/30 text-kafan-dark bg-white/90 px-6 py-3 sm:px-7 sm:py-3.5 md:px-8 md:py-4 rounded-xl md:rounded-2xl font-semibold backdrop-blur-sm hover:bg-kafan-purple hover:text-white hover:border-kafan-purple transition-all duration-300 flex items-center justify-center text-sm sm:text-base"
           >
             <span>Watch Intro</span>
             <i
-              class="fas fa-play ml-3 group-hover:scale-110 transition-transform duration-300"
+              class="fas fa-play ml-2 sm:ml-3 group-hover:scale-110 transition-transform duration-300 text-xs sm:text-sm"
             ></i>
           </a>
         </div>
 
-        <div class="flex justify-center items-center space-x-10 text-gray-500">
-          <div class="text-center">
-            <div class="text-2xl font-bold text-kafan-purple">150+</div>
-            <div class="text-sm">Projects Completed</div>
+        <!-- Stats -->
+        <div
+          class="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 text-gray-500 px-4"
+        >
+          <div class="text-center min-w-[80px] sm:min-w-0">
+            <div class="text-xl sm:text-2xl font-bold text-kafan-purple">
+              150+
+            </div>
+            <div class="text-xs sm:text-sm">Projects Completed</div>
           </div>
-          <div class="h-8 w-px bg-gray-300"></div>
-          <div class="text-center">
-            <div class="text-2xl font-bold text-kafan-accent">98%</div>
-            <div class="text-sm">Client Satisfaction</div>
+          <div class="hidden sm:block h-6 sm:h-8 w-px bg-gray-300"></div>
+          <div class="text-center min-w-[80px] sm:min-w-0">
+            <div class="text-xl sm:text-2xl font-bold text-kafan-accent">
+              98%
+            </div>
+            <div class="text-xs sm:text-sm">Client Satisfaction</div>
           </div>
-          <div class="h-8 w-px bg-gray-300"></div>
-          <div class="text-center">
-            <div class="text-2xl font-bold text-kafan-purple">5+</div>
-            <div class="text-sm">Years Experience</div>
+          <div class="hidden sm:block h-6 sm:h-8 w-px bg-gray-300"></div>
+          <div class="text-center min-w-[80px] sm:min-w-0">
+            <div class="text-xl sm:text-2xl font-bold text-kafan-purple">
+              5+
+            </div>
+            <div class="text-xs sm:text-sm">Years Experience</div>
           </div>
         </div>
       </div>
@@ -337,7 +363,7 @@
             </h2>
             <p class="text-lg text-gray-600 mb-8">
               At Kafan Digitals, we believe that exceptional design is more than
-              aesthetics—it's about creating meaningful connections between
+              aesthetics. It's about creating meaningful connections between
               brands and their audiences.
             </p>
             <div class="space-y-4">
@@ -504,7 +530,9 @@
               With 5+ years in tech and a Computer Science background, I lead a
               team passionate about creating digital solutions that don't just
               look good—they drive real business results. We're here to
-              transform your vision into a digital masterpiece.
+              transform your vision into a digital masterpiece. <br />
+              <br />
+              -KabirAlmustapha Fandirma (CEO)
             </p>
 
             <div class="flex flex-wrap gap-3 mb-8">
