@@ -1,181 +1,732 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kafan Digitals - Creative Design Solutions</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="icon" href="images/Kafan Digitals Favicon.png" alt="Kafan Digitals Logo" type="image/png">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="images/Kafan Digitals Favicon.png"
+      alt="Kafan Digitals Logo"
+      type="image/png"
+    />
 
-    
-</head>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "kafan-purple": "#433878",
+              "kafan-accent": "#d357ef",
+              "kafan-light": "#f8f9fa",
+              "kafan-dark": "#212529",
+            },
+            fontFamily: {
+              inter: ["Inter", "sans-serif"],
+              space: ["Space Grotesk", "monospace"],
+            },
+            animation: {
+              float: "float 6s ease-in-out infinite",
+              glow: "glow 2s ease-in-out infinite alternate",
+              "slide-in": "slideIn 0.5s ease-out",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+              glow: {
+                from: { "box-shadow": "0 0 20px #d357ef" },
+                to: { "box-shadow": "0 0 30px #d357ef, 0 0 40px #433878" },
+              },
+              slideIn: {
+                from: { opacity: "0", transform: "translateY(30px)" },
+                to: { opacity: "1", transform: "translateY(0)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .text-gradient {
+          background: linear-gradient(135deg, #d357ef 0%, #433878 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+        .bg-gradient-radial {
+          background: radial-gradient(
+              circle at top right,
+              rgba(211, 87, 239, 0.15) 0%,
+              transparent 50%
+            ),
+            radial-gradient(
+              circle at bottom left,
+              rgba(67, 56, 120, 0.1) 0%,
+              transparent 50%
+            );
+        }
+      }
+    </style>
+  </head>
 
-<body>
+  <body class="font-inter bg-white text-kafan-dark overflow-x-hidden">
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <div class="d-flex align-items-center">
-                <div class="logo-circle me-2">
-                    <img src="/images/Kafan Digitals Logo.png" alt="Kafan Digitals Logo" class="logo-img">
-                </div>
-                <a class="navbar-brand" href="/">Kafan Digitals</a>
+    <nav
+      class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 py-4 transition-all duration-300"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center space-x-3">
+            <div
+              class="w-12 h-12 rounded-2xl bg-gradient-to-br from-kafan-purple to-kafan-accent flex items-center justify-center shadow-lg"
+            >
+              <img
+                src="/images/Kafan Digitals Logo.png"
+                alt="Kafan Digitals Logo"
+                class="h-10 w-10 object-contain"
+              />
             </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <a href="/" class="font-space font-bold text-2xl text-gradient"
+              >Kafan Digitals</a
+            >
+          </div>
+
+          <div class="hidden md:flex items-center space-x-10">
+            <a
+              href="/"
+              class="font-medium text-kafan-dark hover:text-kafan-accent transition-colors duration-300 relative group"
+            >
+              Home
+              <span
+                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-kafan-accent transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="/portfolio"
+              class="font-medium text-kafan-dark hover:text-kafan-accent transition-colors duration-300 relative group"
+            >
+              Portfolio
+              <span
+                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-kafan-accent transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="/testimonials"
+              class="font-medium text-kafan-dark hover:text-kafan-accent transition-colors duration-300 relative group"
+            >
+              Testimonials
+              <span
+                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-kafan-accent transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="/contact"
+              class="bg-gradient-to-r from-kafan-purple to-kafan-accent text-white px-6 py-2.5 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            >
+              Get Started
+            </a>
+          </div>
+
+          <div class="md:hidden">
+            <button
+              type="button"
+              class="text-kafan-dark hover:text-kafan-accent focus:outline-none"
+              id="mobile-menu-button"
+            >
+              <svg
+                class="h-7 w-7"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/portfolio">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/testimonials">Testimonials</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div
+        class="md:hidden hidden bg-white/95 backdrop-blur-lg border-t border-gray-100 shadow-lg"
+        id="mobile-menu"
+      >
+        <div class="px-4 pt-4 pb-6 space-y-4">
+          <a
+            href="/"
+            class="block py-3 px-4 rounded-xl hover:bg-kafan-light font-medium text-kafan-dark"
+            >Home</a
+          >
+          <a
+            href="/portfolio"
+            class="block py-3 px-4 rounded-xl hover:bg-kafan-light font-medium text-kafan-dark"
+            >Portfolio</a
+          >
+          <a
+            href="/testimonials"
+            class="block py-3 px-4 rounded-xl hover:bg-kafan-light font-medium text-kafan-dark"
+            >Testimonials</a
+          >
+          <a
+            href="/contact"
+            class="block py-3 px-4 rounded-xl bg-gradient-to-r from-kafan-purple to-kafan-accent text-white font-medium text-center mt-2"
+            >Get Started</a
+          >
+        </div>
+      </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container text-center py-5">
-            <h2>Welcome to:</h2>
-            <h1>Kafan Digital Solutions</h1>
-            <p class="lead">One Partner, Every Digital Need</p>
+    <section
+      class="min-h-screen flex items-center justify-center pt-20 pb-16 bg-gradient-radial relative overflow-hidden"
+    >
+      <div
+        class="absolute top-10 right-10 w-72 h-72 bg-kafan-accent/10 rounded-full blur-3xl animate-float"
+      ></div>
+      <div
+        class="absolute bottom-10 left-10 w-96 h-96 bg-kafan-purple/10 rounded-full blur-3xl animate-float"
+        style="animation-delay: 2s"
+      ></div>
+
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 mt-4"
+      >
+        <div
+          class="inline-flex items-center space-x-2 bg-kafan-light px-4 py-2 rounded-full mb-8 border border-gray-200 shadow-sm"
+        >
+          <span
+            class="w-2 h-2 bg-kafan-accent rounded-full animate-glow"
+          ></span>
+          <span class="text-sm font-medium text-kafan-dark"
+            >Kafan Digital Solutions</span
+          >
         </div>
+
+        <h1
+          class="text-5xl md:text-7xl lg:text-8xl font-space font-bold mb-6 leading-tight"
+        >
+          <span class="text-gradient">...One Stop</span>
+          <span class="block">Every Digital</span>
+          <span class="text-gradient">Solutions</span>
+        </h1>
+
+        <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-12">
+          We craft stunning digital experiences that captivate audiences and
+          drive results. Your vision, our expertise—let's create something
+          extraordinary.
+        </p>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-5 mb-16">
+          <a
+            href="/portfolio"
+            class="group bg-gradient-to-r from-kafan-purple to-kafan-accent text-white px-8 py-4 rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
+          >
+            <span>Explore Our Work</span>
+            <i
+              class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300"
+            ></i>
+          </a>
+          <a
+            href="#intro"
+            class="group border-2 border-kafan-purple/20 text-kafan-dark bg-white/80 px-8 py-4 rounded-2xl font-semibold backdrop-blur-sm hover:bg-kafan-purple hover:text-white hover:border-kafan-purple transition-all duration-300 flex items-center justify-center"
+          >
+            <span>Watch Intro</span>
+            <i
+              class="fas fa-play ml-3 group-hover:scale-110 transition-transform duration-300"
+            ></i>
+          </a>
+        </div>
+
+        <div class="flex justify-center items-center space-x-10 text-gray-500">
+          <div class="text-center">
+            <div class="text-2xl font-bold text-kafan-purple">150+</div>
+            <div class="text-sm">Projects Completed</div>
+          </div>
+          <div class="h-8 w-px bg-gray-300"></div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-kafan-accent">98%</div>
+            <div class="text-sm">Client Satisfaction</div>
+          </div>
+          <div class="h-8 w-px bg-gray-300"></div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-kafan-purple">5+</div>
+            <div class="text-sm">Years Experience</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="intro" class="py-20 bg-kafan-light">
+      <div
+        class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-slide-in"
+      >
+        <h2 class="text-4xl md:text-5xl font-space font-bold mb-4">
+          See Our Magic in <span class="text-gradient">Action</span>
+        </h2>
+        <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+          Get a glimpse of our creative process and see how we transform ideas
+          into stunning digital realities.
+        </p>
+
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl group">
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-kafan-purple/20 to-kafan-accent/20 z-10 group-hover:opacity-0 transition-opacity duration-500"
+          ></div>
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            controls
+            class="w-full group-hover:scale-105 transition-transform duration-700"
+          >
+            <source src="videos/video1.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div
+          class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4"
+        >
+          <a
+            href="videos/video1.mp4"
+            download
+            class="inline-flex items-center bg-gradient-to-r from-kafan-purple to-kafan-accent text-white px-7 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+          >
+            <i class="fas fa-download mr-3"></i>Download Showreel
+          </a>
+          <a
+            href="/portfolio"
+            class="inline-flex items-center text-kafan-dark font-medium hover:text-kafan-accent transition-colors duration-300"
+          >
+            View Full Portfolio <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
     </section>
 
     <!-- About Section -->
-
-
-    <!-- Video Section Introduction-->
-    <div class="video-section text-center py-5">
-        <h3>Watch Our Introduction Video</h3>
-        <p class="lead">Get to know us better through our video</p>
-        <video autoplay muted loop playsinline controls width="400">
-            <source src="videos/video1.mp4" type="video/mp4">Your browser does not support the video tag.
-        </video>
-        <br><a href="videos/video1.mp4" download class="download-btn">Download Video</a>
-        <br>
-
-        <!-- About Text-->
-        <section class="about-section py-5 bg-light">
-            <div class="container">
-                <h3 class="text-center mb-4">About Us</h3>
-                <p class="text-center">We specialize in creating stunning visual designs that help brands stand out.
-                    <br>From
-                    logos to complete branding packages, we've got you covered.
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div class="animate-slide-in">
+            <h2 class="text-4xl md:text-5xl font-space font-bold mb-6">
+              We Don't Just Design, We
+              <span class="text-gradient">Create Experiences</span>
+            </h2>
+            <p class="text-lg text-gray-600 mb-8">
+              At Kafan Digitals, we believe that exceptional design is more than
+              aesthetics—it's about creating meaningful connections between
+              brands and their audiences.
+            </p>
+            <div class="space-y-4">
+              <div class="flex items-start space-x-4">
+                <div
+                  class="w-8 h-8 rounded-full bg-kafan-accent/20 flex items-center justify-center flex-shrink-0 mt-1"
+                >
+                  <i class="fas fa-check text-kafan-accent text-sm"></i>
+                </div>
+                <p class="text-gray-600">
+                  Strategic design thinking that aligns with your business goals
                 </p>
-
-            </div>
-        </section>
-
-
-
-        <!-- CEO Section -->
-        <section class="ceo-section py-5">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-4 text-center mb-4 mb-md-0">
-                        <div class="ceo-image-container">
-                            <img src="/images/ceo.webp" alt="CEO of Kafan Digitals"
-                                class="ceo-image img-fluid rounded-circle">
-                            <div class="ceo-social">
-                                <a href="https://www.linkedin.com/in/kabiru-almustapha-fandirma-230ab5271?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                                    class="text-white me-2"><i class="fab fa-linkedin"></i></a>
-                                <a href="https://x.com/kafandigitals?t=iW_XYmusWgK2gCfbKXL-FQ&s=09"
-                                    class="text-white me-2"><i class="fab fa-twitter"></i></a>
-                                <a href="https://github.com/Kabirfandirma" class="text-white"><i
-                                        class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <h2 class="mb-4">Meet Our CEO</h2>
-                        <p class="lead2">Hi, I'm Kabir Almustapha Fandirma, founder of Kafan
-                            Digitals.
-                        </p>
-                        <p>I'm a Computer Science student with a passion for creating beautiful digital experiences.
-                            With
-                            expertise in web development, graphic design, and UI/UX design, I lead our team to deliver
-                            exceptional results for our clients.</p>
-                        <p>My journey in tech started 5 years ago, and since then I've helped numerous businesses
-                            establish their digital presence through innovative design solutions.</p>
-                        <div class="skills mt-4">
-                            <span class="badge bg-primary me-2">Web Development</span>
-                            <span class="badge bg-primary me-2">Graphic Design</span>
-                            <span class="badge bg-primary me-2">UI/UX Design</span>
-                            <span class="badge bg-primary">Branding</span>
-                        </div>
-                    </div>
+              </div>
+              <div class="flex items-start space-x-4">
+                <div
+                  class="w-8 h-8 rounded-full bg-kafan-accent/20 flex items-center justify-center flex-shrink-0 mt-1"
+                >
+                  <i class="fas fa-check text-kafan-accent text-sm"></i>
                 </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="cta-section py-5">
-            <div class="container text-center">
-                <h3 class="mb-4">Ready to Work Together?</h3>
-                <div class="cta-buttons">
-                    <a href="/portfolio" class="cta-button cta-primary">Explore Our Work</a>
-                    <a href="/contact" class="cta-button cta-secondary">Get in Touch</a>
+                <p class="text-gray-600">
+                  Cutting-edge technology and innovative solutions
+                </p>
+              </div>
+              <div class="flex items-start space-x-4">
+                <div
+                  class="w-8 h-8 rounded-full bg-kafan-accent/20 flex items-center justify-center flex-shrink-0 mt-1"
+                >
+                  <i class="fas fa-check text-kafan-accent text-sm"></i>
                 </div>
-                <p class="mt-4">If our work impressed you, <a href="/testimonials"
-                        style="color: var(--primary-accent);">leave a testimony</a></p>
+                <p class="text-gray-600">
+                  Collaborative approach that puts your vision at the center
+                </p>
+              </div>
             </div>
-        </section>
+          </div>
 
-        <!-- Bootstrap JS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Custom JS -->
-        <script src="/js/script.js"></script>
+          <div class="relative">
+            <div class="grid grid-cols-2 gap-6">
+              <div class="space-y-6">
+                <div
+                  class="bg-kafan-light p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                >
+                  <div
+                    class="w-12 h-12 rounded-xl bg-kafan-purple/10 flex items-center justify-center mb-4"
+                  >
+                    <i class="fas fa-palette text-kafan-purple text-xl"></i>
+                  </div>
+                  <h3 class="font-space font-bold text-lg mb-2">
+                    Visual Design
+                  </h3>
+                  <p class="text-gray-600 text-sm">
+                    Stunning visuals that capture attention and communicate your
+                    brand essence.
+                  </p>
+                </div>
+                <div
+                  class="bg-kafan-light p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                >
+                  <div
+                    class="w-12 h-12 rounded-xl bg-kafan-accent/10 flex items-center justify-center mb-4"
+                  >
+                    <i class="fas fa-code text-kafan-accent text-xl"></i>
+                  </div>
+                  <h3 class="font-space font-bold text-lg mb-2">
+                    Web Development
+                  </h3>
+                  <p class="text-gray-600 text-sm">
+                    Robust, scalable websites that perform beautifully across
+                    all devices.
+                  </p>
+                </div>
+              </div>
+              <div class="space-y-6 mt-10">
+                <div
+                  class="bg-kafan-light p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                >
+                  <div
+                    class="w-12 h-12 rounded-xl bg-kafan-purple/10 flex items-center justify-center mb-4"
+                  >
+                    <i class="fas fa-mobile-alt text-kafan-purple text-xl"></i>
+                  </div>
+                  <h3 class="font-space font-bold text-lg mb-2">
+                    UI/UX Design
+                  </h3>
+                  <p class="text-gray-600 text-sm">
+                    Intuitive interfaces that provide seamless user experiences.
+                  </p>
+                </div>
+                <div
+                  class="bg-kafan-light p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                >
+                  <div
+                    class="w-12 h-12 rounded-xl bg-kafan-accent/10 flex items-center justify-center mb-4"
+                  >
+                    <i class="fas fa-bullhorn text-kafan-accent text-xl"></i>
+                  </div>
+                  <h3 class="font-space font-bold text-lg mb-2">
+                    Brand Strategy
+                  </h3>
+                  <p class="text-gray-600 text-sm">
+                    Comprehensive branding that tells your unique story
+                    effectively.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <footer>
-  <div class="footer-container">
-    <h2 class="footer-logo">KAFAN DIGIT<span>ALS</span></h2>
+    <!-- CEO Section -->
+    <section
+      class="py-20 bg-gradient-to-br from-kafan-purple to-kafan-accent text-white"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="relative">
+            <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl">
+              <img
+                src="/images/ceo.webp"
+                alt="CEO of Kafan Digitals"
+                class="w-full h-auto"
+              />
+            </div>
+            <div
+              class="absolute -bottom-6 -right-6 w-24 h-24 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/20"
+            ></div>
+            <div
+              class="absolute -top-6 -left-6 w-20 h-20 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/20"
+            ></div>
 
-    <div class="footer-links">
-      <a href="/">Home</a>
-      <a href="/testimonials">Testimonials</a>
-      <a href="/portfolio">Portfolio</a>
-      <a href="/contact">Contact</a>
-    </div>
+            <div class="flex justify-center space-x-4 mt-8">
+              <a
+                href="https://www.linkedin.com/in/kabiru-almustapha-fandirma-230ab5271?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                class="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a
+                href="https://x.com/kafandigitals?t=iW_XYmusWgK2gCfbKXL-FQ&s=09"
+                class="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="https://github.com/Kabirfandirma"
+                class="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
 
-     <div class="footer-socials">
-          <a href="https://facebook.com/khabeer.fandirmerh12"
-            ><i class="fab fa-facebook-f"></i
-          ></a>
-          <a href="https://instagram.com/kafan_digitals"
-            ><i class="fab fa-instagram"></i
-          ></a>
-          <a href="https://wa.me/+2347039350100"
-            ><i class="fab fa-whatsapp"></i
-          ></a>
+          <div class="animate-slide-in">
+            <h2 class="text-4xl md:text-5xl font-space font-bold mb-6">
+              Meet Kabir, Our Visionary CEO
+            </h2>
+            <p class="text-xl mb-6 opacity-90">
+              "I founded Kafan Digitals with a simple mission: to bridge the gap
+              between innovative ideas and exceptional digital execution."
+            </p>
+            <p class="text-lg mb-8 opacity-80">
+              With 5+ years in tech and a Computer Science background, I lead a
+              team passionate about creating digital solutions that don't just
+              look good—they drive real business results. We're here to
+              transform your vision into a digital masterpiece.
+            </p>
+
+            <div class="flex flex-wrap gap-3 mb-8">
+              <span
+                class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-xl font-medium"
+                >Web Development</span
+              >
+              <span
+                class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-xl font-medium"
+                >Graphic Design</span
+              >
+              <span
+                class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-xl font-medium"
+                >UI/UX Design</span
+              >
+              <span
+                class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-xl font-medium"
+                >Brand Strategy</span
+              >
+            </div>
+
+            <a
+              href="/contact"
+              class="inline-flex items-center bg-white text-kafan-purple px-6 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors duration-300"
+            >
+              Schedule a Call <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-kafan-light">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl md:text-5xl font-space font-bold mb-6">
+          Ready to Create Something <span class="text-gradient">Amazing</span>?
+        </h2>
+        <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+          Let's collaborate to bring your ideas to life with stunning design and
+          cutting-edge technology.
+        </p>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-5 mb-8">
+          <a
+            href="/contact"
+            class="group bg-gradient-to-r from-kafan-purple to-kafan-accent text-white px-8 py-4 rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 flex items-center justify-center"
+          >
+            <span>Start Your Project</span>
+            <i
+              class="fas fa-paper-plane ml-3 group-hover:translate-x-1 transition-transform duration-300"
+            ></i>
+          </a>
+          <a
+            href="/portfolio"
+            class="group border-2 border-kafan-purple/20 text-kafan-dark bg-white px-8 py-4 rounded-2xl font-semibold hover:bg-kafan-purple hover:text-white hover:border-kafan-purple transition-all duration-300 flex items-center justify-center"
+          >
+            <span>View Our Work</span>
+            <i
+              class="fas fa-eye ml-3 group-hover:scale-110 transition-transform duration-300"
+            ></i>
+          </a>
         </div>
 
-    <p class="copyright">
-      © 2025 Kafan Digitals. All Rights Reserved.
-    </p>
-  </div>
-</footer>
+        <p class="text-gray-500">
+          Loved our work?
+          <a
+            href="/testimonials"
+            class="text-kafan-accent font-semibold hover:underline"
+            >Share your experience</a
+          >
+        </p>
+      </div>
+    </section>
 
-        <script>
-            // Auto-update copyright year
-            document.getElementById('year').textContent = new Date().getFullYear();
-        </script>
-</body>
+    <!-- Footer -->
+    <footer class="bg-kafan-dark text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+          <div class="md:col-span-2">
+            <div class="flex items-center space-x-3 mb-6">
+              <div
+                class="w-10 h-10 rounded-xl bg-gradient-to-br from-kafan-purple to-kafan-accent flex items-center justify-center"
+              >
+                <img
+                  src="/images/Kafan Digitals Logo.png"
+                  alt="Kafan Digitals Logo"
+                  class="h-8 w-8 object-contain"
+                />
+              </div>
+              <span class="font-space font-bold text-2xl">Kafan Digitals</span>
+            </div>
+            <p class="text-gray-400 max-w-md mb-8">
+              We transform ideas into exceptional digital experiences. Partner
+              with us to create something remarkable.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="https://facebook.com/khabeer.fandirmerh12"
+                class="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center hover:bg-kafan-accent transition-colors duration-300"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="https://instagram.com/kafan_digitals"
+                class="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center hover:bg-kafan-accent transition-colors duration-300"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://wa.me/+2347039350100"
+                class="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center hover:bg-kafan-accent transition-colors duration-300"
+              >
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
 
+          <div>
+            <h3 class="font-space font-bold text-lg mb-6">Quick Links</h3>
+            <div class="space-y-3">
+              <a
+                href="/"
+                class="block text-gray-400 hover:text-white transition-colors duration-300"
+                >Home</a
+              >
+              <a
+                href="/portfolio"
+                class="block text-gray-400 hover:text-white transition-colors duration-300"
+                >Portfolio</a
+              >
+              <a
+                href="/testimonials"
+                class="block text-gray-400 hover:text-white transition-colors duration-300"
+                >Testimonials</a
+              >
+              <a
+                href="/contact"
+                class="block text-gray-400 hover:text-white transition-colors duration-300"
+                >Contact</a
+              >
+            </div>
+          </div>
+
+          <div>
+            <h3 class="font-space font-bold text-lg mb-6">Services</h3>
+            <div class="space-y-3">
+              <a
+                href="#"
+                class="block text-gray-400 hover:text-white transition-colors duration-300"
+                >Web Design</a
+              >
+              <a
+                href="#"
+                class="block text-gray-400 hover:text-white transition-colors duration-300"
+                >UI/UX Design</a
+              >
+              <a
+                href="#"
+                class="block text-gray-400 hover:text-white transition-colors duration-300"
+                >Branding</a
+              >
+              <a
+                href="#"
+                class="block text-gray-400 hover:text-white transition-colors duration-300"
+                >Development</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500"
+        >
+          <p>
+            &copy; <span id="year"></span> Kafan Digitals. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // Mobile menu toggle
+      document
+        .getElementById("mobile-menu-button")
+        .addEventListener("click", function () {
+          const menu = document.getElementById("mobile-menu");
+          menu.classList.toggle("hidden");
+        });
+
+      // Auto-update copyright year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector("nav");
+        if (window.scrollY > 50) {
+          navbar.classList.add("shadow-lg", "bg-white/95");
+        } else {
+          navbar.classList.remove("shadow-lg", "bg-white/95");
+        }
+      });
+
+      // Add animation to elements when they come into view
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-slide-in");
+          }
+        });
+      }, observerOptions);
+
+      // Observe elements for animation
+      document.querySelectorAll("section").forEach((section) => {
+        observer.observe(section);
+      });
+    </script>
+  </body>
 </html>

@@ -4,108 +4,780 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Our Portfolio - Kafan Digitals</title>
-
-    <!-- Bootstrap CSS -->
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- AOS CSS for scroll animation -->
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/style.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "kafan-purple": "#433878",
+              "kafan-accent": "#d357ef",
+              "kafan-light": "#f8f9fa",
+              "kafan-dark": "#212529",
+            },
+            fontFamily: {
+              inter: ["Inter", "sans-serif"],
+              space: ["Space Grotesk", "monospace"],
+            },
+            animation: {
+              float: "float 6s ease-in-out infinite",
+              glow: "glow 2s ease-in-out infinite alternate",
+              "slide-in": "slideIn 0.5s ease-out",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+              glow: {
+                from: { "box-shadow": "0 0 20px #d357ef" },
+                to: { "box-shadow": "0 0 30px #d357ef, 0 0 40px #433878" },
+              },
+              slideIn: {
+                from: { opacity: "0", transform: "translateY(30px)" },
+                to: { opacity: "1", transform: "translateY(0)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .text-gradient {
+          background: linear-gradient(135deg, #d357ef 0%, #433878 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+        .bg-gradient-radial {
+          background: radial-gradient(
+              circle at top right,
+              rgba(211, 87, 239, 0.15) 0%,
+              transparent 50%
+            ),
+            radial-gradient(
+              circle at bottom left,
+              rgba(67, 56, 120, 0.1) 0%,
+              transparent 50%
+            );
+        }
+        .portfolio-image {
+          object-fit: contain !important;
+          width: 100%;
+          height: 100%;
+          max-height: 250px;
+        }
+        .image-container {
+          height: 250px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #f8f9fa;
+          padding: 20px;
+        }
+      }
+    </style>
   </head>
 
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <div class="d-flex align-items-center">
-          <div class="logo-circle me-2">
-            <img
-              src="/images/Kafan Digitals Logo.png"
-              alt="Kafan Digitals Logo"
-              class="logo-img"
-            />
+  <body class="font-inter bg-white text-kafan-dark overflow-x-hidden">
+    <!-- Navigation -->
+    <nav
+      class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 py-4 transition-all duration-300"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center space-x-3">
+            <div
+              class="w-12 h-12 rounded-2xl bg-gradient-to-br from-kafan-purple to-kafan-accent flex items-center justify-center shadow-lg"
+            >
+              <img
+                src="/images/Kafan Digitals Logo.png"
+                alt="Kafan Digitals Logo"
+                class="h-10 w-10 object-contain"
+              />
+            </div>
+            <a href="/" class="font-space font-bold text-2xl text-gradient"
+              >Kafan Digitals</a
+            >
           </div>
-          <a class="navbar-brand" href="/">Kafan Digitals</a>
+
+          <div class="hidden md:flex items-center space-x-10">
+            <a
+              href="/"
+              class="font-medium text-kafan-dark hover:text-kafan-accent transition-colors duration-300 relative group"
+            >
+              Home
+              <span
+                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-kafan-accent transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="/portfolio"
+              class="font-medium text-kafan-dark hover:text-kafan-accent transition-colors duration-300 relative group"
+            >
+              Portfolio
+              <span
+                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-kafan-accent transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="/testimonials"
+              class="font-medium text-kafan-dark hover:text-kafan-accent transition-colors duration-300 relative group"
+            >
+              Testimonials
+              <span
+                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-kafan-accent transition-all duration-300 group-hover:w-full"
+              ></span>
+            </a>
+            <a
+              href="/contact"
+              class="bg-gradient-to-r from-kafan-purple to-kafan-accent text-white px-6 py-2.5 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            >
+              Contact
+            </a>
+          </div>
+
+          <div class="md:hidden">
+            <button
+              type="button"
+              class="text-kafan-dark hover:text-kafan-accent focus:outline-none"
+              id="mobile-menu-button"
+            >
+              <svg
+                class="h-7 w-7"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </button>
+          </div>
         </div>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-            <li class="nav-item">
-              <a class="nav-link active" href="/portfolio">Portfolio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/testimonials">Testimonials</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/contact">Contact</a>
-            </li>
-          </ul>
+      </div>
+
+      <!-- Mobile menu -->
+      <div
+        class="md:hidden hidden bg-white/95 backdrop-blur-lg border-t border-gray-100 shadow-lg"
+        id="mobile-menu"
+      >
+        <div class="px-4 pt-4 pb-6 space-y-4">
+          <a
+            href="/"
+            class="block py-3 px-4 rounded-xl hover:bg-kafan-light font-medium text-kafan-dark"
+            >Home</a
+          >
+          <a
+            href="/portfolio"
+            class="block py-3 px-4 rounded-xl hover:bg-kafan-light font-medium text-kafan-dark"
+            >Portfolio</a
+          >
+          <a
+            href="/testimonials"
+            class="block py-3 px-4 rounded-xl hover:bg-kafan-light font-medium text-kafan-dark"
+            >Testimonials</a
+          >
+          <a
+            href="/contact"
+            class="block py-3 px-4 rounded-xl bg-gradient-to-r from-kafan-purple to-kafan-accent text-white font-medium text-center"
+            >Contact</a
+          >
         </div>
       </div>
     </nav>
 
-    <!-- Portfolio Section -->
-    <main class="container py-5">
-      <h1 class="text-center mb-5">Our Portfolio</h1>
-      <div class="row" id="portfolio-items">
-        <!-- Portfolio items will be inserted here by JS -->
-      </div>
-      <p class="mt-4">
-        If our work impressed you,
-        <a href="/testimonials" style="color: var(--primary-accent)"
-          >leave a testimony</a
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 bg-gradient-radial relative overflow-hidden">
+      <div
+        class="absolute top-10 right-10 w-72 h-72 bg-kafan-accent/10 rounded-full blur-3xl animate-float"
+      ></div>
+      <div
+        class="absolute bottom-10 left-10 w-96 h-96 bg-kafan-purple/10 rounded-full blur-3xl animate-float"
+        style="animation-delay: 2s"
+      ></div>
+
+      <div
+        class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 animate-slide-in"
+      >
+        <div
+          class="inline-flex items-center space-x-2 bg-kafan-light px-4 py-2 rounded-full mb-8 border border-gray-200 shadow-sm"
         >
-      </p>
-    </main>
+          <span
+            class="w-2 h-2 bg-kafan-accent rounded-full animate-glow"
+          ></span>
+          <span class="text-sm font-medium text-kafan-dark"
+            >Our Creative Showcase</span
+          >
+        </div>
+
+        <h1
+          class="text-5xl md:text-6xl lg:text-7xl font-space font-bold mb-6 leading-tight"
+        >
+          <span class="text-gradient">Our Creative</span>
+          <span class="block">Portfolio</span>
+          <span class="text-gradient">Showcase</span>
+        </h1>
+
+        <p class="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto">
+          Explore our collection of stunning digital creations that have helped
+          businesses thrive and brands shine.
+        </p>
+      </div>
+    </section>
+
+    <!-- Portfolio Filter Section -->
+    <section class="py-8 bg-kafan-light">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap justify-center gap-4">
+          <button
+            class="filter-btn px-6 py-3 rounded-xl bg-gradient-to-r from-kafan-purple to-kafan-accent text-white font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active"
+            data-filter="all"
+          >
+            All Projects
+          </button>
+          <button
+            class="filter-btn px-6 py-3 rounded-xl bg-white text-kafan-dark font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            data-filter="web-design"
+          >
+            Web Design
+          </button>
+          <button
+            class="filter-btn px-6 py-3 rounded-xl bg-white text-kafan-dark font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            data-filter="branding"
+          >
+            Branding
+          </button>
+          <button
+            class="filter-btn px-6 py-3 rounded-xl bg-white text-kafan-dark font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            data-filter="ui-ux"
+          >
+            UI/UX Design
+          </button>
+          <button
+            class="filter-btn px-6 py-3 rounded-xl bg-white text-kafan-dark font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            data-filter="development"
+          >
+            Development
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          id="portfolio-items"
+        >
+          <!-- Portfolio Item 1 - Using your actual images -->
+          <div
+            class="portfolio-item animate-slide-in"
+            data-category="web-design"
+          >
+            <div
+              class="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group h-full flex flex-col"
+            >
+              <div class="image-container">
+                <img
+                  src="/images/portfolio/web-design-1.jpg"
+                  alt="E-commerce Website Design"
+                  class="portfolio-image group-hover:scale-105 transition-transform duration-500"
+                  onerror="this.src='/images/portfolio/placeholder-1.jpg'"
+                />
+              </div>
+              <div class="p-6 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="font-space font-bold text-xl">
+                    Modern E-commerce Platform
+                  </h3>
+                  <span
+                    class="bg-kafan-accent/10 text-kafan-accent px-3 py-1 rounded-full text-sm font-medium"
+                    >Web Design</span
+                  >
+                </div>
+                <p class="text-gray-600 mb-4">
+                  A fully responsive e-commerce website with intuitive user
+                  experience and modern design principles.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-kafan-light px-3 py-1 rounded-full text-sm"
+                    >React</span
+                  >
+                  <span class="bg-kafan-light px-3 py-1 rounded-full text-sm"
+                    >Tailwind CSS</span
+                  >
+                  <span class="bg-kafan-light px-3 py-1 rounded-full text-sm"
+                    >Node.js</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Portfolio Item 2 -->
+          <div
+            class="portfolio-item animate-slide-in"
+            data-category="branding"
+            style="animation-delay: 0.1s"
+          >
+            <div
+              class="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group h-full flex flex-col"
+            >
+              <div class="image-container">
+                <img
+                  src="/images/portfolio/branding-1.jpg"
+                  alt="Brand Identity Design"
+                  class="portfolio-image group-hover:scale-105 transition-transform duration-500"
+                  onerror="this.src='/images/portfolio/placeholder-2.jpg'"
+                />
+              </div>
+              <div class="p-6 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="font-space font-bold text-xl">
+                    Tech Startup Branding
+                  </h3>
+                  <span
+                    class="bg-kafan-purple/10 text-kafan-purple px-3 py-1 rounded-full text-sm font-medium"
+                    >Branding</span
+                  >
+                </div>
+                <p class="text-gray-600 mb-4">
+                  Complete brand identity including logo, color palette,
+                  typography, and brand guidelines.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-kafan-light px-3 py-1 rounded-full text-sm"
+                    >Logo Design</span
+                  >
+                  <span class="bg-kafan-light px-3 py-1 rounded-full text-sm"
+                    >Brand Guidelines</span
+                  >
+                  <span class="bg-kafan-light px-3 py-1 rounded-full text-sm"
+                    >Visual Identity</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Portfolio Item 3 -->
+          <div
+            class="portfolio-item animate-slide-in"
+            data-category="ui-ux"
+            style="animation-delay: 0.2s"
+          >
+            <div
+              class="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group h-full flex flex-col"
+            >
+              <div class="image-container">
+                <img
+                  src="/images/portfolio/ui-ux-1.jpg"
+                  alt="Mobile App Design"
+                  class="portfolio-image group-hover:scale-105 transition-transform duration-500"
+                  onerror="this.src='/images/portfolio/placeholder-3.jpg'"
+                />
+              </div>
+              <div class="p-6 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="font-space font-bold text-xl">
+                    Fitness Mobile App
+                  </h3>
+                  <span
+                    class="bg-kafan-accent/10 text-kafan-accent px-3 py-1 rounded-full text-sm font-medium"
+                    >UI/UX Design</span
+                  >
+                </div>
+                <p class="text-gray-600 mb-4">
+                  User-centered mobile application design with intuitive
+                  navigation and engaging user experience.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-kafan-light px-3 py-1 rounded-full text-sm"
+                    >Figma</span
+                  >
+                  <span class="bg-kafan-light px-3 py-1 rounded-full text-sm"
+                    >User Research</span
+                  >
+                  <span class="bg-kafan-light px-3 py-1 rounded-full text-sm"
+                    >Prototyping</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Portfolio Item 4 -->
+          <div
+            class="portfolio-item animate-slide-in"
+            data-category="development"
+            style="animation-delay: 0.3s"
+          >
+            <div
+              class="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group h-full flex flex-col"
+            >
+              <div class="image-container">
+                <img
+                  src="/images/portfolio/development-1.jpg"
+                  alt="Web Application"
+                  class="portfolio-image group-hover:scale-105 transition-transform duration-500"
+                  onerror="this.src='/images/portfolio/placeholder-4.jpg'"
+                />
+              </div>
+              <div class="p-6 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="font-space font-bold text-xl">SaaS Platform</h3>
+                  <span
+                    class="bg-kafan-purple/10 text-kafan-purple px-3 py-1 rounded-full text-sm font-medium"
+                    >Development</span
+                  >
+                </div>
+                <p class="text-gray-600 mb-4">
+                  Scalable SaaS application with robust backend architecture and
+                  responsive frontend interface.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-kafan-light px-3 py-1 rounded-full text-sm"
+                    >Vue.js</span
+                  >
+                  <span class="bg-kafan-light px-3 py-1 rounded-full text-sm"
+                    >Python</span
+                  >
+                  <span class="bg-kafan-light px-3 py-1 rounded-full text-sm"
+                    >PostgreSQL</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Portfolio Item 5 -->
+          <div
+            class="portfolio-item animate-slide-in"
+            data-category="web-design"
+            style="animation-delay: 0.4s"
+          >
+            <div
+              class="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group h-full flex flex-col"
+            >
+              <div class="image-container">
+                <img
+                  src="/images/portfolio/web-design-2.jpg"
+                  alt="Corporate Website"
+                  class="portfolio-image group-hover:scale-105 transition-transform duration-500"
+                  onerror="this.src='/images/portfolio/placeholder-5.jpg'"
+                />
+              </div>
+              <div class="p-6 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="font-space font-bold text-xl">
+                    Corporate Website
+                  </h3>
+                  <span
+                    class="bg-kafan-accent/10 text-kafan-accent px-3 py-1 rounded-full text-sm font-medium"
+                    >Web Design</span
+                  >
+                </div>
+                <p class="text-gray-600 mb-4">
+                  Professional corporate website with clean design, clear
+                  messaging, and optimal performance.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-kafan-light px-3 py-1 rounded-full text-sm"
+                    >HTML/CSS</span
+                  >
+                  <span class="bg-kafan-light px-3 py-1 rounded-full text-sm"
+                    >JavaScript</span
+                  >
+                  <span class="bg-kafan-light px-3 py-1 rounded-full text-sm"
+                    >WordPress</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Portfolio Item 6 -->
+          <div
+            class="portfolio-item animate-slide-in"
+            data-category="ui-ux"
+            style="animation-delay: 0.5s"
+          >
+            <div
+              class="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group h-full flex flex-col"
+            >
+              <div class="image-container">
+                <img
+                  src="/images/portfolio/ui-ux-2.jpg"
+                  alt="Dashboard Design"
+                  class="portfolio-image group-hover:scale-105 transition-transform duration-500"
+                  onerror="this.src='/images/portfolio/placeholder-6.jpg'"
+                />
+              </div>
+              <div class="p-6 flex-grow">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="font-space font-bold text-xl">
+                    Analytics Dashboard
+                  </h3>
+                  <span
+                    class="bg-kafan-accent/10 text-kafan-accent px-3 py-1 rounded-full text-sm font-medium"
+                    >UI/UX Design</span
+                  >
+                </div>
+                <p class="text-gray-600 mb-4">
+                  Data visualization dashboard with intuitive interface and
+                  comprehensive analytics features.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-kafan-light px-3 py-1 rounded-full text-sm"
+                    >Data Visualization</span
+                  >
+                  <span class="bg-kafan-light px-3 py-1 rounded-full text-sm"
+                    >Dashboard Design</span
+                  >
+                  <span class="bg-kafan-light px-3 py-1 rounded-full text-sm"
+                    >User Testing</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="text-center mt-16">
+          <p class="text-xl text-gray-600 mb-6">
+            If our work impressed you,
+            <a
+              href="/testimonials"
+              class="text-kafan-accent font-semibold hover:underline"
+              >leave a testimony</a
+            >
+          </p>
+          <a
+            href="/contact"
+            class="inline-flex items-center bg-gradient-to-r from-kafan-purple to-kafan-accent text-white px-8 py-4 rounded-2xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+          >
+            <span>Start Your Project</span>
+            <i
+              class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300"
+            ></i>
+          </a>
+        </div>
+      </div>
+    </section>
 
     <!-- Footer -->
-    <footer>
-      <div class="footer-container">
-        <h2 class="footer-logo">KAFAN DIGIT<span>ALS</span></h2>
+    <footer class="bg-kafan-dark text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+          <div class="md:col-span-2">
+            <div class="flex items-center space-x-3 mb-6">
+              <div
+                class="w-10 h-10 rounded-xl bg-gradient-to-br from-kafan-purple to-kafan-accent flex items-center justify-center"
+              >
+                <img
+                  src="/images/Kafan Digitals Logo.png"
+                  alt="Kafan Digitals Logo"
+                  class="h-8 w-8 object-contain"
+                />
+              </div>
+              <span class="font-space font-bold text-2xl">Kafan Digitals</span>
+            </div>
+            <p class="text-gray-400 max-w-md mb-8">
+              We transform ideas into exceptional digital experiences. Partner
+              with us to create something remarkable.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="https://facebook.com/khabeer.fandirmerh12"
+                class="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center hover:bg-kafan-accent transition-colors duration-300"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="https://instagram.com/kafan_digitals"
+                class="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center hover:bg-kafan-accent transition-colors duration-300"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://wa.me/+2347039350100"
+                class="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center hover:bg-kafan-accent transition-colors duration-300"
+              >
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
 
-        <div class="footer-links">
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/portfolio">Portfolio</a>
-          <a href="/contact">Contact</a>
+          <div>
+            <h3 class="font-space font-bold text-lg mb-6">Quick Links</h3>
+            <div class="space-y-3">
+              <a
+                href="/"
+                class="block text-gray-400 hover:text-white transition-colors duration-300"
+                >Home</a
+              >
+              <a
+                href="/portfolio"
+                class="block text-gray-400 hover:text-white transition-colors duration-300"
+                >Portfolio</a
+              >
+              <a
+                href="/testimonials"
+                class="block text-gray-400 hover:text-white transition-colors duration-300"
+                >Testimonials</a
+              >
+              <a
+                href="/contact"
+                class="block text-gray-400 hover:text-white transition-colors duration-300"
+                >Contact</a
+              >
+            </div>
+          </div>
+
+          <div>
+            <h3 class="font-space font-bold text-lg mb-6">Services</h3>
+            <div class="space-y-3">
+              <a
+                href="#"
+                class="block text-gray-400 hover:text-white transition-colors duration-300"
+                >Web Design</a
+              >
+              <a
+                href="#"
+                class="block text-gray-400 hover:text-white transition-colors duration-300"
+                >UI/UX Design</a
+              >
+              <a
+                href="#"
+                class="block text-gray-400 hover:text-white transition-colors duration-300"
+                >Branding</a
+              >
+              <a
+                href="#"
+                class="block text-gray-400 hover:text-white transition-colors duration-300"
+                >Development</a
+              >
+            </div>
+          </div>
         </div>
 
-        <div class="footer-socials">
-          <a href="https://facebook.com/khabeer.fandirmerh12"
-            ><i class="fab fa-facebook-f"></i
-          ></a>
-          <a href="https://instagram.com/kafan_digitals"
-            ><i class="fab fa-instagram"></i
-          ></a>
-          <a href="https://wa.me/+2347039350100"
-            ><i class="fab fa-whatsapp"></i
-          ></a>
+        <div
+          class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500"
+        >
+          <p>
+            &copy; <span id="year"></span> Kafan Digitals. All rights reserved.
+            Crafted with <i class="fas fa-heart text-kafan-accent mx-1"></i> by
+            our team.
+          </p>
         </div>
-
-        <p class="copyright">© 2025 Kafan Digitals. All Rights Reserved.</p>
       </div>
     </footer>
 
-    <!-- JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <!-- Scripts -->
     <script>
-      AOS.init();
+      // Mobile menu toggle
+      document
+        .getElementById("mobile-menu-button")
+        .addEventListener("click", function () {
+          const menu = document.getElementById("mobile-menu");
+          menu.classList.toggle("hidden");
+        });
+
+      // Auto-update copyright year
       document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Portfolio filtering
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const portfolioItems = document.querySelectorAll(".portfolio-item");
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          // Remove active class from all buttons
+          filterButtons.forEach((btn) => {
+            btn.classList.remove(
+              "active",
+              "bg-gradient-to-r",
+              "from-kafan-purple",
+              "to-kafan-accent",
+              "text-white"
+            );
+            btn.classList.add("bg-white", "text-kafan-dark");
+          });
+
+          // Add active class to clicked button
+          this.classList.add(
+            "active",
+            "bg-gradient-to-r",
+            "from-kafan-purple",
+            "to-kafan-accent",
+            "text-white"
+          );
+          this.classList.remove("bg-white", "text-kafan-dark");
+
+          const filterValue = this.getAttribute("data-filter");
+
+          portfolioItems.forEach((item) => {
+            if (
+              filterValue === "all" ||
+              item.getAttribute("data-category") === filterValue
+            ) {
+              item.style.display = "block";
+              setTimeout(() => {
+                item.style.opacity = "1";
+                item.style.transform = "translateY(0)";
+              }, 10);
+            } else {
+              item.style.opacity = "0";
+              item.style.transform = "translateY(20px)";
+              setTimeout(() => {
+                item.style.display = "none";
+              }, 300);
+            }
+          });
+        });
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector("nav");
+        if (window.scrollY > 50) {
+          navbar.classList.add("shadow-lg", "bg-white/95");
+        } else {
+          navbar.classList.remove("shadow-lg", "bg-white/95");
+        }
+      });
+
+      // Handle image loading errors
+      document.addEventListener("DOMContentLoaded", function () {
+        const images = document.querySelectorAll(".portfolio-image");
+        images.forEach((img) => {
+          img.addEventListener("error", function () {
+            // If image fails to load, use a gradient placeholder
+            this.src =
+              "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDUwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MDAiIGhlaWdodD0iMzAwIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIvPgo8dGV4dCB4PSIyNTAiIHk9IjE1MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+S2FmYW4gRGlnaXRhbHM8L3RleHQ+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50IiB4MT0iMCIgeTE9IjAiIHgyPSI1MDAiIHkyPSIzMDAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNDMzODc4Ii8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2QzNTdlZiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPg==";
+          });
+        });
+      });
     </script>
-    <script src="/js/script.js"></script>
   </body>
 </html>
