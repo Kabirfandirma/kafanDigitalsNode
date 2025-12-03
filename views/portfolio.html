@@ -278,10 +278,30 @@
     <!-- Portfolio Section -->
     <section class="py-16 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Loading Indicator -->
+        <div id="loading-indicator" class="text-center py-8">
+          <div class="inline-flex items-center space-x-3">
+            <div
+              class="w-8 h-8 rounded-full border-2 border-kafan-accent border-t-transparent animate-spin"
+            ></div>
+            <span class="text-gray-600">Loading portfolio projects...</span>
+          </div>
+        </div>
+
+        <!-- Dynamic Portfolio Container -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden"
+          id="dynamic-portfolio-container"
+        >
+          <!-- Portfolio items will be loaded here dynamically -->
+        </div>
+
+        <!-- Static Portfolio Items (keep as fallback) -->
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          id="portfolio-items"
+          id="static-portfolio-items"
         >
+          <!-- Your existing static portfolio items here -->
           <!-- Portfolio Item 1 - Amina Branding -->
           <div class="portfolio-item animate-slide-in" data-category="branding">
             <div
@@ -292,7 +312,7 @@
                   src="/portfolio-images/amina.webp"
                   alt="Amina Brand Identity Design"
                   class="portfolio-image group-hover:scale-105 transition-transform duration-500"
-                  onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDUwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MDAiIGhlaWdodD0iMzAwIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIvPgo8dGV4dCB4PSIyNTAiIHk9IjE1MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+S2FmYW4gRGlnaXRhbHM8L3RleHQ+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50IiB4MT0iMCIgeTE9IjAiIHgyPSI1MDAiIHkyPSIzMDAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNDMzODc4Ii8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2QzNTdlZiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPg=='"
+                  onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDUwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MDAiIGhlaWdodD0iMzAwIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIvPgo8dGV4dCB4PSIyNTAiIHk9IjE1MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+S2FmYW4gRGlnaXRhbHM8L3RleHQ+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50IiB4MT0iMCIgeTE9IjAiIHgyPSI1MDAiIHkyPSIzMDAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNDMzODc4Ii8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2QzNTdlZiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPg=='"
                 />
               </div>
               <div class="p-6 flex-grow">
@@ -384,7 +404,7 @@
                   src="/portfolio-images/Beli 2.webp"
                   alt="Beli Brand Design"
                   class="portfolio-image group-hover:scale-105 transition-transform duration-500"
-                  onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDUwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MDAiIGhlaWdodD0iMzAwIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIvPgo8dGV4dCB4PSIyNTAiIHk9IjE1MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+S2FmYW4gRGlnaXRhbHM8L3RleHQ+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50IiB4MT0iMCIgeTE9IjAiIHgyPSI1MDAiIHkyPSIzMDAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNDMzODc4Ii8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2QzNTdlZiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPg=='"
+                  onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDUwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MDAiIGhlaWdodD0iMzAwIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIvPgo8dGV4dCB4PSIyNTAiIHk9IjE1MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+S2FmYW4gRGlnaXRhbHM8L3RleHQ+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50IiB4MT0iMCIgeTE9IjAiIHgyPSI1MDAiIHkyPSIzMDAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVUseIj4KPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNDMzODc4Ii8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2QzNTdlZiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPg=='"
                 />
               </div>
               <div class="p-6 flex-grow">
@@ -550,6 +570,46 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="text-center py-16 hidden">
+          <div
+            class="w-24 h-24 mx-auto mb-6 rounded-full bg-kafan-light flex items-center justify-center shadow-lg"
+          >
+            <i class="fas fa-folder-open text-3xl text-kafan-accent"></i>
+          </div>
+          <h3 class="text-2xl font-space font-bold mb-2">
+            No Uploaded Projects Yet
+          </h3>
+          <p class="text-gray-600 max-w-md mx-auto mb-6">
+            Our admin hasn't uploaded any portfolio projects yet. Check back
+            soon!
+          </p>
+          <p class="text-sm text-gray-500">
+            (Showing static portfolio examples in the meantime)
+          </p>
+        </div>
+
+        <!-- Error State -->
+        <div id="error-state" class="text-center py-16 hidden">
+          <div
+            class="w-24 h-24 mx-auto mb-6 rounded-full bg-red-50 flex items-center justify-center shadow-lg"
+          >
+            <i class="fas fa-exclamation-triangle text-3xl text-red-500"></i>
+          </div>
+          <h3 class="text-2xl font-space font-bold mb-2">
+            Unable to Load Portfolio
+          </h3>
+          <p class="text-gray-600 max-w-md mx-auto mb-6">
+            We're having trouble loading our uploaded projects.
+          </p>
+          <button
+            onclick="loadDynamicPortfolio()"
+            class="bg-gradient-to-r from-kafan-purple to-kafan-accent text-white px-6 py-3 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+          >
+            <i class="fas fa-redo mr-2"></i> Try Again
+          </button>
         </div>
 
         <!-- CTA Section -->
@@ -767,7 +827,164 @@
               "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDUwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MDAiIGhlaWdodD0iMzAwIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIvPgo8dGV4dCB4PSIyNTAiIHk9IjE1MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+S2FmYW4gRGlnaXRhbHM8L3RleHQ+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50IiB4MT0iMCIgeTE9IjAiIHgyPSI1MDAiIHkyPSIzMDAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNDMzODc4Ii8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2QzNTdlZiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPg==";
           });
         });
+
+        // Load dynamic portfolio items
+        loadDynamicPortfolio();
       });
+
+      // Function to load dynamic portfolio from API
+      async function loadDynamicPortfolio() {
+        const loadingIndicator = document.getElementById("loading-indicator");
+        const dynamicContainer = document.getElementById(
+          "dynamic-portfolio-container"
+        );
+        const staticContainer = document.getElementById(
+          "static-portfolio-items"
+        );
+        const emptyState = document.getElementById("empty-state");
+        const errorState = document.getElementById("error-state");
+
+        try {
+          // Show loading, hide others
+          loadingIndicator.classList.remove("hidden");
+          dynamicContainer.classList.add("hidden");
+          staticContainer.classList.add("hidden");
+          emptyState.classList.add("hidden");
+          errorState.classList.add("hidden");
+
+          // Fetch portfolio items from API
+          const response = await fetch("/api/portfolio");
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const portfolioItems = await response.json();
+
+          // Hide loading
+          loadingIndicator.classList.add("hidden");
+
+          if (!portfolioItems || portfolioItems.length === 0) {
+            // No uploaded items, show empty state but keep static items
+            emptyState.classList.remove("hidden");
+            staticContainer.classList.remove("hidden");
+            return;
+          }
+
+          // Clear dynamic container
+          dynamicContainer.innerHTML = "";
+
+          // Add uploaded portfolio items
+          portfolioItems.forEach((item, index) => {
+            // Determine category (you might want to add category field to your portfolio items)
+            const categories = ["branding", "web-design", "social-media"];
+            const randomCategory =
+              categories[Math.floor(Math.random() * categories.length)];
+
+            const portfolioItem = document.createElement("div");
+            portfolioItem.className = "portfolio-item animate-slide-in";
+            portfolioItem.setAttribute("data-category", randomCategory);
+            portfolioItem.style.animationDelay = `${index * 0.1}s`;
+
+            portfolioItem.innerHTML = `
+              <div class="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group h-full flex flex-col">
+                <div class="image-container">
+                  <img
+                    src="${item.image}"
+                    alt="${item.title}"
+                    class="portfolio-image group-hover:scale-105 transition-transform duration-500"
+                    onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDUwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MDAiIGhlaWdodD0iMzAwIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIvPgo8dGV4dCB4PSIyNTAiIHk9IjE1MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+S2FmYW4gRGlnaXRhbHM8L3RleHQ+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50IiB4MT0iMCIgeTE9IjAiIHgyPSI1MDAiIHkyPSIzMDAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNDMzODc4Ii8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2QzNTdlZiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPg=='"
+                  />
+                </div>
+                <div class="p-6 flex-grow">
+                  <div class="flex justify-between items-start mb-3">
+                    <h3 class="font-space font-bold text-xl">${item.title}</h3>
+                    <span class="bg-kafan-purple/10 text-kafan-purple px-3 py-1 rounded-full text-sm font-medium">
+                      ${randomCategory.replace("-", " ").toUpperCase()}
+                    </span>
+                  </div>
+                  <p class="text-gray-600 mb-4">${item.description}</p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="bg-kafan-light px-3 py-1 rounded-full text-sm">Custom Design</span>
+                    <span class="bg-kafan-light px-3 py-1 rounded-full text-sm">Uploaded Project</span>
+                    ${
+                      item.category
+                        ? `<span class="bg-kafan-light px-3 py-1 rounded-full text-sm">${item.category}</span>`
+                        : ""
+                    }
+                  </div>
+                </div>
+              </div>
+            `;
+
+            dynamicContainer.appendChild(portfolioItem);
+          });
+
+          // Show dynamic container, hide static
+          dynamicContainer.classList.remove("hidden");
+          staticContainer.classList.add("hidden");
+
+          // Re-initialize filtering for new items
+          initializeFiltering();
+        } catch (error) {
+          console.error("Error loading portfolio:", error);
+          loadingIndicator.classList.add("hidden");
+          errorState.classList.remove("hidden");
+          staticContainer.classList.remove("hidden"); // Show static as fallback
+        }
+      }
+
+      // Reinitialize filtering after loading dynamic content
+      function initializeFiltering() {
+        const allPortfolioItems = document.querySelectorAll(".portfolio-item");
+
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            // Remove active class from all buttons
+            filterButtons.forEach((btn) => {
+              btn.classList.remove(
+                "active",
+                "bg-gradient-to-r",
+                "from-kafan-purple",
+                "to-kafan-accent",
+                "text-white"
+              );
+              btn.classList.add("bg-white", "text-kafan-dark");
+            });
+
+            // Add active class to clicked button
+            this.classList.add(
+              "active",
+              "bg-gradient-to-r",
+              "from-kafan-purple",
+              "to-kafan-accent",
+              "text-white"
+            );
+            this.classList.remove("bg-white", "text-kafan-dark");
+
+            const filterValue = this.getAttribute("data-filter");
+
+            allPortfolioItems.forEach((item) => {
+              if (
+                filterValue === "all" ||
+                item.getAttribute("data-category") === filterValue
+              ) {
+                item.style.display = "block";
+                setTimeout(() => {
+                  item.style.opacity = "1";
+                  item.style.transform = "translateY(0)";
+                }, 10);
+              } else {
+                item.style.opacity = "0";
+                item.style.transform = "translateY(20px)";
+                setTimeout(() => {
+                  item.style.display = "none";
+                }, 300);
+              }
+            });
+          });
+        });
+      }
     </script>
   </body>
 </html>
