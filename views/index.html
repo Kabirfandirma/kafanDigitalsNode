@@ -1,0 +1,133 @@
+<%- include('partials/head.html', { title: 'Kafan Digitals | Flyers, branding and websites that get noticed', desc: 'Kafan Digitals designs flyers, brand identities, social media posts and websites for businesses, schools and creators across Nigeria and West Africa.' }) %>
+<body>
+<%- include('partials/nav.html') %>
+<% const by = (s) => work.find((w) => w.slug === s) || work[0];
+   const cols = [['assunniy','dankama','exchange','fitra','weekend'],['gas-fee','amina','tiktok','beli-2','mal-hassan'],['emeralld','bin-fussar','asb','pasta','transfer']];
+   const picks = ['tiktok','ittisam','exchange','amina','gas-fee','mal-hassan','pasta','dankama'].map(by); %>
+<main id="main">
+
+<section class="hero">
+  <div class="wall" aria-hidden="true">
+    <% cols.forEach((c, ci) => { %>
+      <div class="wall__col" style="--c:<%= ci %>" data-abs="<%= [-0.1, 0.09, -0.17][ci] %>">
+        <% c.forEach((s, i) => { const w = by(s); %><img src="<%= w.thumb %>" alt="" width="450" height="450" <%= i > 1 ? 'loading=lazy' : '' %> decoding="async"><% }) %>
+      </div>
+    <% }) %>
+  </div>
+  <div class="wrap">
+    <div class="hero__copy">
+      <h1 class="h1" data-split>One stop for every digital solution.</h1>
+      <p class="lead" data-r style="--d:5">Flyers, brand identities, social posts and websites for businesses, schools and creators across Nigeria and West Africa.</p>
+      <div class="hero__cta" data-r style="--d:6">
+        <a class="btn btn--solid" href="/portfolio">See our work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn--line" href="/contact">Start a project</a>
+      </div>
+      <div class="stats" data-r style="--d:7">
+        <div><b data-count="150" data-suffix="+">150+</b><span>Projects completed</span></div>
+        <div><b data-count="98" data-suffix="%">98%</b><span>Client satisfaction</span></div>
+        <div><b data-count="5" data-suffix="+">5+</b><span>Years of experience</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__row" data-hx>
+    <span>Flyers</span><img src="/images/mark-192.png" alt=""><span>Brand identity</span><img src="/images/mark-192.png" alt=""><span>Social posts</span><img src="/images/mark-192.png" alt=""><span>Websites</span><img src="/images/mark-192.png" alt=""><span>UI/UX</span><img src="/images/mark-192.png" alt=""><span>Flyers</span>
+  </div>
+</div>
+
+<section class="sec paper">
+  <div class="wrap">
+    <p class="fill" data-fill>We don't just design, we create experiences. Exceptional design is more than aesthetics. It builds meaningful connections between brands and the people they serve.</p>
+    <div class="checks">
+      <p data-r="line" style="--d:0">Strategic design thinking that aligns with your business goals.</p>
+      <p data-r="line" style="--d:1">Modern tools and fresh ideas, applied to every brief.</p>
+      <p data-r="line" style="--d:2">A collaborative process that keeps your vision at the center.</p>
+    </div>
+  </div>
+</section>
+
+<section class="show" data-hscroll>
+  <div class="show__stick">
+    <div class="wrap show__head" style="width:100%">
+      <h2 class="h2" data-split>Recent work</h2>
+      <a class="btn btn--line" href="/portfolio">All <%= work.length %> projects</a>
+    </div>
+    <div class="show__track">
+      <% picks.forEach((w) => { %>
+        <a class="card" href="/portfolio"><div class="card__img"><img src="<%= w.thumb %>" alt="<%= w.alt %>" width="450" height="450" loading="lazy" decoding="async"></div><h3><%= w.title %></h3><p><%= w.what %></p></a>
+      <% }) %>
+      <a class="card" href="/portfolio"><div class="card--all">See every project</div></a>
+    </div>
+    <div class="show__bar" aria-hidden="true"><span></span></div>
+  </div>
+</section>
+
+<section class="sec violet">
+  <div class="wrap svc">
+    <div class="svc__head">
+      <h2 class="h2" data-split>What we make</h2>
+      <p class="lead" style="color:#cfc6ee;margin-top:20px" data-r>Pick one service or bring us the whole brief.</p>
+    </div>
+    <div>
+      <% [['Visual design','Stunning visuals that capture attention and communicate your brand.','Flyers, posters, social media posts'],['Web development','Robust, scalable websites that perform on every device.','Business websites, web apps'],['UI/UX design','Intuitive interfaces that make products easy to use.','Interfaces, user flows'],['Brand strategy','Branding that tells your story and keeps it consistent.','Logos, colour, brand guidelines']].forEach((s, i) => { %>
+        <div class="row" data-r="line" style="--d:<%= i %>"><h3><%= s[0] %></h3><p><%= s[1] %></p><small><%= s[2] %></small></div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="sec reel">
+  <div class="wrap">
+    <h2 class="h2" data-split style="margin-bottom:clamp(32px,5vw,64px);max-width:14ch">See our work in motion</h2>
+    <div class="reel__frame" data-expand><video src="/videos/video1.mp4" autoplay muted loop playsinline controls preload="metadata"></video></div>
+    <div class="reel__meta"><p class="muted" style="max-width:44ch">A quick look at how we turn ideas into finished designs.</p><a class="btn btn--line" href="/videos/video1.mp4" download>Download showreel</a></div>
+  </div>
+</section>
+
+<section class="sec paper">
+  <div class="wrap ceo">
+    <div class="ceo__panel" data-r="clip"><img data-speed="-0.06" src="/images/ceo.webp" alt="Kabir Almustapha Fandirma, founder and CEO of Kafan Digitals" width="1024" height="1536" loading="lazy"></div>
+    <div>
+      <h2 class="h2" data-split>Meet Kabir, our founder</h2>
+      <p class="quote" data-r>"I founded Kafan Digitals with a simple mission: to bridge the gap between innovative ideas and exceptional digital execution."</p>
+      <p class="muted" data-r style="max-width:52ch">With 5+ years in tech and a Computer Science background, I lead a team that builds digital solutions that don't just look good. They drive real business results.</p>
+      <div class="tags" data-r><span>Web development</span><span>Graphic design</span><span>UI/UX design</span><span>Brand strategy</span></div>
+      <div class="hero__cta" style="margin-top:32px" data-r><a class="btn btn--ink" href="/contact">Schedule a call</a></div>
+      <div class="social" data-r>
+        <a href="https://www.linkedin.com/in/kabiru-almustapha-fandirma-230ab5271" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/kafandigitals" rel="noopener">X</a>
+        <a href="https://github.com/Kabirfandirma" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% if (testimonials.length) { %>
+<section class="sec">
+  <div class="wrap">
+    <div class="show__head"><h2 class="h2" data-split>Kind words</h2><a class="btn btn--line" href="/testimonials">Read all or share yours</a></div>
+    <div class="quotes">
+      <% testimonials.forEach((t, i) => { %>
+        <blockquote class="q" data-r="line" style="--d:<%= i %>"><p><%= t.message.trim() %></p><footer><span class="av"><%= t.name.trim().charAt(0).toUpperCase() %></span><b><%= t.name %></b></footer></blockquote>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<section class="sec lilac cta">
+  <img class="cta__mark" data-speed="0.18" src="/images/mark-512.png" alt="" aria-hidden="true">
+  <div class="wrap" style="position:relative">
+    <h2 data-split>Have a project in mind?</h2>
+    <div class="hero__cta" data-r>
+      <a class="btn btn--ink" href="/contact">Start your project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn--line" href="https://wa.me/2347039350100" rel="noopener">Chat on WhatsApp</a>
+    </div>
+  </div>
+</section>
+</main>
+<%- include('partials/footer.html') %>
+</body>
+</html>

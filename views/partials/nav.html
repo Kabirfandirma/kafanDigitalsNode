@@ -1,0 +1,18 @@
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <a class="brand" href="/" aria-label="Kafan Digitals home"><img src="/images/mark-64.png" alt="" width="28" height="28">Kafan Digitals</a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="/"<%- path === '/' ? ' aria-current="page"' : '' %>>Home</a>
+      <a href="/portfolio"<%- path === '/portfolio' ? ' aria-current="page"' : '' %>>Portfolio</a>
+      <a href="/testimonials"<%- path === '/testimonials' ? ' aria-current="page"' : '' %>>Testimonials</a>
+      <a href="/contact"<%- path === '/contact' ? ' aria-current="page"' : '' %>>Contact</a>
+    </nav>
+    <a class="btn btn--solid" href="/contact">Start a project</a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Menu"><i></i><i></i></button>
+  </div>
+</header>
+<div class="menu" id="menu">
+  <a style="--i:0" href="/">Home</a><a style="--i:1" href="/portfolio">Portfolio</a><a style="--i:2" href="/testimonials">Testimonials</a><a style="--i:3" href="/contact">Contact</a>
+</div>

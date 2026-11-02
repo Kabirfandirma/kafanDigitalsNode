@@ -1,0 +1,33 @@
+<%- include('partials/head.html', { title: 'Testimonials | Kafan Digitals', desc: 'What clients say about working with Kafan Digitals, and a place to share your own experience.' }) %>
+<body>
+<%- include('partials/nav.html') %>
+<main id="main">
+<section class="phead"><div class="wrap">
+  <h1 class="h1" data-split>Kind words from our clients</h1>
+  <p class="lead" data-r>Real feedback from the people we've designed for.</p>
+</div></section>
+<section class="sec paper" style="padding-top:clamp(60px,8vw,110px)"><div class="wrap">
+  <% if (testimonials.length) { %>
+  <div class="masonry">
+    <% testimonials.forEach((t, i) => { %>
+      <blockquote class="q" data-r="line" style="--d:<%= i % 4 %>"><p><%= t.message.trim() %></p>
+        <footer style="color:#5d5683"><span class="av"><% if (t.photo) { %><img src="<%= t.photo %>" alt="" referrerpolicy="no-referrer" loading="lazy" onerror="this.remove()"><% } else { %><%= t.name.trim().charAt(0).toUpperCase() %><% } %></span>
+        <span><b style="color:var(--ink)"><%= t.name %></b><%= new Date(t.date).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }) %></span></footer></blockquote>
+    <% }) %>
+  </div>
+  <% } else { %><p class="empty">No reviews published yet. Be the first to share your experience below.</p><% } %>
+</div></section>
+<section class="sec lilac"><div class="wrap split">
+  <div><h2 class="h2" data-split>Worked with us? Tell us how it went.</h2><p style="margin-top:20px;max-width:40ch" data-r>Reviews appear on this page once we've approved them. Your email stays private.</p></div>
+  <form data-endpoint="/submit-testimonial" data-r>
+    <div class="field"><input id="name" name="name" placeholder=" " required autocomplete="name"><label for="name">Your name</label></div>
+    <div class="field"><input id="email" name="email" type="email" placeholder=" " autocomplete="email"><label for="email">Email (optional, never shown)</label></div>
+    <div class="field"><textarea id="message" name="message" rows="4" placeholder=" " required></textarea><label for="message">Your experience</label></div>
+    <button class="btn btn--ink" type="submit">Submit review</button>
+    <div class="msg" hidden role="status" aria-live="polite"></div>
+  </form>
+</div></section>
+</main>
+<%- include('partials/footer.html') %>
+</body>
+</html>

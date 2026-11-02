@@ -1,0 +1,36 @@
+<%- include('partials/head.html', { title: 'Contact | Kafan Digitals', desc: 'Tell Kafan Digitals about your project. We reply within 24 hours.' }) %>
+<body>
+<%- include('partials/nav.html') %>
+<main id="main">
+<section class="phead"><div class="wrap">
+  <h1 class="h1" data-split>Tell us what you need.</h1>
+  <p class="lead" data-r>Share a few details and we'll reply within 24 hours with next steps.</p>
+</div></section>
+<section class="sec paper" style="padding-top:clamp(60px,8vw,110px)"><div class="wrap split">
+  <div>
+    <h2 class="h2" data-split>Prefer to talk?</h2>
+    <div class="ways" data-r>
+      <a href="mailto:hello@kafandigitals.com"><small>Email, replies within 24 hours</small><b>hello@kafandigitals.com</b></a>
+      <a href="tel:+2347039350100"><small>Call, Monday to Friday 9am to 6pm</small><b>+234 703 935 0100</b></a>
+      <a href="https://wa.me/2347039350100" rel="noopener"><small>WhatsApp, usually the fastest</small><b>Message us</b></a>
+      <div><small>Based in</small><b>Digital Innovation Hub, Nigeria</b></div>
+    </div>
+    <div class="social" data-r>
+      <a href="https://instagram.com/kafan_digitals" rel="noopener">Instagram</a>
+      <a href="https://facebook.com/khabeer.fandirmerh12" rel="noopener">Facebook</a>
+      <a href="https://x.com/kafandigitals" rel="noopener">X</a>
+    </div>
+  </div>
+  <form data-endpoint="/send-message" data-r>
+    <div class="field"><input id="name" name="name" placeholder=" " required autocomplete="name"><label for="name">Your name</label></div>
+    <div class="field"><input id="email" name="email" type="email" placeholder=" " required autocomplete="email"><label for="email">Email address</label></div>
+    <div class="field"><input id="subject" name="subject" placeholder=" " required><label for="subject">What's it about?</label></div>
+    <div class="field"><textarea id="message" name="message" rows="5" placeholder=" " required></textarea><label for="message">Tell us about your project</label></div>
+    <button class="btn btn--ink" type="submit">Send message <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    <div class="msg" hidden role="status" aria-live="polite"></div>
+  </form>
+</div></section>
+</main>
+<%- include('partials/footer.html') %>
+</body>
+</html>
